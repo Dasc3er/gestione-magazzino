@@ -38,10 +38,11 @@ int main() {
 	char *storico_filename = "storico.csv";
 
 	int directory_length = strlen(path) + strlen(directory_name) + 2;
+	int char_size = sizeof(char);
 
-	char *directory = malloc(directory_length);
-	char *magazzino = malloc(directory_length + strlen(magazzino_filename) + 2);
-	char *storico = malloc(directory_length + strlen(magazzino_filename) + 2);
+	char *directory = malloc(char_size * directory_length);
+	char *magazzino = malloc(char_size * (directory_length + strlen(magazzino_filename) + 2));
+	char *storico = malloc(char_size * (directory_length + strlen(magazzino_filename) + 2));
 	if (magazzino == NULL || storico == NULL) {
 		COLOR_RED();
 		printf("Errore di allocazione dinamica\n");

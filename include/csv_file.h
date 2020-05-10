@@ -39,6 +39,13 @@ typedef struct {
 csv_file* csv_init(char *filename, int has_header);
 
 /**
+ * Funzione per la scrittura di un contenuto in una riga specifica del file CSV.
+ * 
+ * Attenzione: l'utilizzo di questa funzione può rendere invalido il contatore line_number delle righe del CSV salvate in memoria.
+ */
+void csv_write(csv_file *file, int line_number, char *content);
+
+/**
  * Libera la memoria dinamica utilizzata per lo struct CSV.
  */
 void csv_free(csv_file *csv);

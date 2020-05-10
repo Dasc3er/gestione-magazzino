@@ -1,4 +1,4 @@
-#include <csv_row.h>
+#include "csv_row.h"
 #include <stdlib.h>
 #include <string.h>
 #include "utils.h"
@@ -107,6 +107,27 @@ int csv_row_wrap(csv_row *csv_row, FILE *fp) {
 	csv_row->csv->current_byte = csv_row->csv->current_byte + bytes_counter;
 
 	return 0;
+}
+
+char* csv_row_to_line(csv_row *csv_row) {
+	// Dimensione della stringa da allocare
+	long length = (csv_row->field_counter - 1) + 1; // Numero di separatori + 1 per la chiusura della stringa
+	for (int i = 0; i < csv_row->field_counter; i++) {
+		length += strlen(*(csv_row->contents + i));
+	}
+
+	char *contents = malloc(sizeof(char) * length);
+	check_allocation(contents);
+
+	for (int i = 0; i < csv_row->field_counter; i++) {
+		if (i != 0) {
+			contents = strcat(contents, ";");
+		}
+
+		contents = strcat(contents, *(csv_row->contents + i));
+	}
+
+	return contents;
 }
 
 char* csv_row_field(csv_row *csv_row, char *name) {

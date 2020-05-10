@@ -1,7 +1,7 @@
 #ifndef CSV_ROW_H_
 #define CSV_ROW_H_
 
-#include <csv_file.h>
+#include "csv_file.h"
 #include <stdio.h>
 
 /**
@@ -41,5 +41,10 @@ void csv_row_free(csv_row *line);
  * Funzione dedicata all'interpretazione del formato CSV e alla relativa suddivisione dei campi.
  */
 int csv_row_wrap(csv_row *csv_row, FILE *fp);
+
+/**
+ * Funzione per la conversione della riga in formato CSV.
+ */
+char * csv_row_to_line(csv_row *csv_row);
 
 #endif /* CSV_ROW_H_ */
