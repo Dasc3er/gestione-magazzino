@@ -54,7 +54,6 @@ csv_records* csv_read(csv_file *file) {
 	// Reallocazione finale
 	length = index;
 	contents = realloc(contents, pointer_size * length);
-	check_allocation(contents);
 
 	results->results = contents;
 	results->length = length;
@@ -68,6 +67,7 @@ void csv_records_free(csv_records *records) {
 		free(line);
 	}
 
+	free(records->results);
 	free(records);
 }
 
