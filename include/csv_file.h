@@ -24,10 +24,10 @@ typedef struct {
  *
  * Lo struct contiene le informazioni di base relative al file CSV, quali la posizione del file relativo nel filesystem e i dettagli dell'header se presente.
  *
- * @param filename Percorso per il file CSV da leggere
+ * @param filepath Percorso per il file CSV da leggere
  * @param has_header Flag per la lettura o meno della prima riga come header
  */
-csv_file* csv_init(char *filename, int has_header);
+csv_file* csv_init(char *filepath, int has_header);
 
 /**
  * Funzione per la scrittura di un contenuto in una riga specifica del file CSV.

@@ -4,10 +4,10 @@
 #include "csv_file.h"
 #include "csv_row.h"
 
-csv_file* csv_init(char *filename, int has_header) {
+csv_file* csv_init(char *filepath, int has_header) {
 	csv_file *pointer = malloc(sizeof(csv_file));
 
-	pointer->filepath = filename;
+	pointer->filepath = filepath;
 	pointer->has_header = has_header != 0;
 	pointer->current_byte = 0;
 	pointer->line_counter = 0;

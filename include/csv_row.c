@@ -3,15 +3,15 @@
 #include <string.h>
 #include "utils.h"
 
-csv_row* csv_read_line(csv_file *csv) {
+csv_row* csv_read_line(csv_file *file) {
 	csv_row *line = malloc(sizeof(csv_row));
-	line->csv = csv;
+	line->csv = file;
 
 	// Lettura della riga
-	FILE *file = file_open(csv->filepath);
-	fseek(file, csv->current_byte, SEEK_SET);
-	int error = csv_row_wrap(line, file);
-	file_close(file);
+	FILE *fp = file_open(file->filepath);
+	fseek(fp, file->current_byte, SEEK_SET);
+	int error = csv_row_wrap(line, fp);
+	file_close(fp);
 
 	// Restituzione di NULL nel caso in cui il record successivo non sia raggiungibile
 	if (error) {
@@ -23,7 +23,7 @@ csv_row* csv_read_line(csv_file *csv) {
 	return line;
 }
 
-int csv_row_wrap(csv_row *csv_row, FILE *fp) {
+int csv_row_wrap(csv_row *row, FILE *fp) {
 	// Inizializzazione del puntatore all'array di campi
 	size_t pointer_size = sizeof(char*);
 	int content_size = 0;
@@ -93,47 +93,47 @@ int csv_row_wrap(csv_row *csv_row, FILE *fp) {
 	}
 
 	// Aggiornamento riga del CSV
-	csv_row->contents = contents;
-	csv_row->field_counter = content_size;
-	csv_row->line_number = csv_row->csv->line_counter;
-	csv_row->bytes = bytes_counter;
+	row->contents = contents;
+	row->field_counter = content_size;
+	row->line_number = row->csv->line_counter;
+	row->bytes = bytes_counter;
 
 	// Aggiornamento CSV
-	csv_row->csv->line_counter = csv_row->csv->line_counter + 1;
-	csv_row->csv->current_byte = csv_row->csv->current_byte + bytes_counter;
+	row->csv->line_counter = row->csv->line_counter + 1;
+	row->csv->current_byte = row->csv->current_byte + bytes_counter;
 
 	return 0;
 }
 
-char* csv_row_to_line(csv_row *csv_row) {
+char* csv_row_to_line(csv_row *row) {
 	// Dimensione della stringa da allocare
-	long length = (csv_row->field_counter - 1) + 1; // Numero di separatori + 1 per la chiusura della stringa
-	for (int i = 0; i < csv_row->field_counter; i++) {
-		length += strlen(*(csv_row->contents + i));
+	long length = (row->field_counter - 1) + 1; // Numero di separatori + 1 per la chiusura della stringa
+	for (int i = 0; i < row->field_counter; i++) {
+		length += strlen(*(row->contents + i));
 	}
 
 	char *contents = malloc(sizeof(char) * length);
 	check_allocation(contents);
 
-	for (int i = 0; i < csv_row->field_counter; i++) {
+	for (int i = 0; i < row->field_counter; i++) {
 		if (i != 0) {
 			contents = strcat(contents, ";");
 		}
 
-		contents = strcat(contents, *(csv_row->contents + i));
+		contents = strcat(contents, *(row->contents + i));
 	}
 
 	return contents;
 }
 
-char* csv_row_field(csv_row *csv_row, char *name) {
+char* csv_row_field(csv_row *row, char *name) {
 	// Controllo sull'inizializzazione dell'header
-	if (!csv_row->csv->has_header) {
+	if (!row->csv->has_header) {
 		return NULL;
 	}
 
-	char **header = csv_row->csv->header;
-	int field_counter = csv_row->csv->field_counter;
+	char **header = row->csv->header;
+	int field_counter = row->csv->field_counter;
 
 	int index = -1;
 	for (int i = 0; i < field_counter; i++) {
@@ -142,12 +142,12 @@ char* csv_row_field(csv_row *csv_row, char *name) {
 		}
 	}
 
-	return csv_row_field_by_index(csv_row, index);
+	return csv_row_field_by_index(row, index);
 }
 
-char* csv_row_field_by_index(csv_row *csv_row, int index) {
-	int field_counter = csv_row->field_counter;
-	char **contents = csv_row->contents;
+char* csv_row_field_by_index(csv_row *row, int index) {
+	int field_counter = row->field_counter;
+	char **contents = row->contents;
 
 	if (index >= field_counter || index < 0) {
 		return NULL;
@@ -156,10 +156,10 @@ char* csv_row_field_by_index(csv_row *csv_row, int index) {
 	return *(contents + index);
 }
 
-void csv_row_free(csv_row *csv_row) {
-	for (int i = 0; i < csv_row->field_counter; i++) {
-		free(*(csv_row->contents + i));
+void csv_row_free(csv_row *row) {
+	for (int i = 0; i < row->field_counter; i++) {
+		free(*(row->contents + i));
 	}
-	free(csv_row->contents);
-	free(csv_row);
+	free(row->contents);
+	free(row);
 }

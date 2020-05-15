@@ -3,7 +3,7 @@
 #include "csv_row.h"
 #include "utils.h"
 
-csv_records* csv_read(csv_file *csv) {
+csv_records* csv_read(csv_file *file) {
 	// Inizializzazione del contenitore dei record
 	csv_records *results = malloc(sizeof(csv_records));
 	check_allocation(results);
@@ -15,13 +15,13 @@ csv_records* csv_read(csv_file *csv) {
 	check_allocation(contents);
 
 	// Apertura del file
-	FILE *file = file_open(csv->filepath);
+	FILE *fp = file_open(file->filepath);
 
 	// Rimozione dell'header dai risultati
-	if (csv->has_header) {
-		fseek(file, csv->header_bytes, SEEK_SET);
+	if (file->has_header) {
+		fseek(fp, file->header_bytes, SEEK_SET);
 	} else {
-		fseek(file, 0L, SEEK_SET);
+		fseek(fp, 0L, SEEK_SET);
 	}
 
 	// Lettura delle righe
@@ -37,9 +37,9 @@ csv_records* csv_read(csv_file *csv) {
 
 		// Creazione della singola riga
 		csv_row *line = malloc(sizeof(csv_row));
-		line->csv = csv;
+		line->csv = file;
 
-		error = csv_row_wrap(line, file);
+		error = csv_row_wrap(line, fp);
 		if (error) {
 			free(line);
 		} else {
@@ -49,7 +49,7 @@ csv_records* csv_read(csv_file *csv) {
 	}
 
 	// Chiusura del file
-	file_close(file);
+	file_close(fp);
 
 	// Reallocazione finale
 	length = index;

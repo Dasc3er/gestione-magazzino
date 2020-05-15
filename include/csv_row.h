@@ -30,50 +30,50 @@ csv_row* csv_read_line(csv_file *csv);
  * 
  * Il nome del campo viene utilizzato per l'individuazione dell'indice relativo a partire dall'header del file CSV.
  * 
- * @param csv_row Puntatore alla riga 
+ * @param row Puntatore alla riga 
  * @param name Nome del campo richiesto
  * 
  * @return Puntatore al contenuto del campo per la riga indicata, oppure a NULL se il campo non è presente.
  */
-char* csv_row_field(csv_row *csv_row, char *name);
+char* csv_row_field(csv_row *row, char *name);
 
 /**
  * Restituisce il contenuto del campo (idetificato tramite indice relativo) all'interno di una riga CSV.
  * 
- * @param csv_row Puntatore alla riga 
+ * @param row Puntatore alla riga 
  * @param index Posizione del campo richiesto
  * 
  * @return Puntatore al contenuto del campo per la riga indicata, oppure a NULL se il campo non è presente.
  */
-char* csv_row_field_by_index(csv_row *csv_row, int index);
+char* csv_row_field_by_index(csv_row *row, int index);
 
 /**
  * Libera la memoria dinamica utilizzata per lo struct della riga CSV.
  * 
- * @param csv_row Puntatore alla riga
+ * @param row Puntatore alla riga
  */
-void csv_row_free(csv_row *csv_row);
+void csv_row_free(csv_row *row);
 
 /**
  * Funzione che legge la riga successiva di un file CSV e ne  interpreta il formato CSV, compilando di conseguenza lo struct dedicato alla riga.
  * 
  * Se il file viene aperto con successo, la procedura salva l'intera linea di testo in memoria separando dinamicamente i campi sulla base del carattere ";".
  * 
- * @param csv_row Puntatore alla riga 
+ * @param row Puntatore alla riga 
  * @param fp Puntatore al file da cui leggere la riga
  * 
- * @return Il numero di byte che compongono la riga sul file di origine
+ * @return 0 nel caso in cui la lettura sia stata completata con successo, 1 altrimenti.
  */
-int csv_row_wrap(csv_row *csv_row, FILE *fp);
+int csv_row_wrap(csv_row *row, FILE *fp);
 
 /**
  * Funzione per la conversione della riga in una stringa di formato CSV.
  * In riferimento alla modalità di lettura e scrittura, questa funzione restituisce il carattere di invio a capo in automatico alla fine del contenuto.
  * 
- * @param csv_row Puntatore alla riga da convertire
+ * @param row Puntatore alla riga da convertire
  * 
  * @return Puntatore alla stringa in formato CSV
  */
-char * csv_row_to_line(csv_row *csv_row);
+char * csv_row_to_line(csv_row *row);
 
 #endif /* CSV_ROW_H_ */

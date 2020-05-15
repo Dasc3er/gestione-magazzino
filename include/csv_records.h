@@ -16,10 +16,12 @@ typedef struct {
 /**
  * Funzione dedicata alla lettura di una serie di righe in memoria.
  */
-csv_records* csv_read(csv_file *csv);
+csv_records* csv_read(csv_file *file);
 
 /**
  * Libera la memoria dinamica utilizzata per lo struct dei record CSV.
+ * 
+ * @param records Puntatore allo struct da liberare
  */
 void csv_records_free(csv_records *records);
 
