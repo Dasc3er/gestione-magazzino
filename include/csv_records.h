@@ -7,13 +7,10 @@
 
 /**
  * Struct per aggregare una sequenza di righe.
- *
- * @param length Numero di righe disponibili
- * @param field_counter Puntatori alle righe
  */
 typedef struct {
-	int length;
-	csv_row **results;
+	int length; /**< Numero di elementi nell'elenco. */  
+	csv_row **results; /**< Puntatori alle righe. */  
 } csv_records;
 
 /**

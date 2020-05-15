@@ -31,12 +31,12 @@ csv_file* csv_init(char *filename, int has_header) {
 	return pointer;
 }
 
-void csv_free(csv_file *csv) {
-	if (csv->has_header) {
-		free(csv->header);
+void csv_free(csv_file *file) {
+	if (file->has_header) {
+		free(file->header);
 	}
 
-	free(csv);
+	free(file);
 }
 
 void csv_write(csv_file *file, int line_number, char *content) {

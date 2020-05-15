@@ -127,4 +127,6 @@ local.properties
 #.project
 
 # Progetto
-tmp/
+doxygen/*
+build/*
+!/**/.gitkeep

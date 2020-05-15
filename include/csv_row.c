@@ -23,10 +23,6 @@ csv_row* csv_read_line(csv_file *csv) {
 	return line;
 }
 
-/**
- * Funzione dedicata alla lettura di una riga di lunghezza arbitraria dal file CSV.
- * Se il file viene aperto con successo, la procedura salva l'intera linea di testo in memoria separando dinamicamente i campi sulla base del carattere ";".
- */
 int csv_row_wrap(csv_row *csv_row, FILE *fp) {
 	// Inizializzazione del puntatore all'array di campi
 	size_t pointer_size = sizeof(char*);
@@ -160,10 +156,10 @@ char* csv_row_field_by_index(csv_row *csv_row, int index) {
 	return *(contents + index);
 }
 
-void csv_row_free(csv_row *line) {
-	for (int i = 0; i < line->field_counter; i++) {
-		free(*(line->contents + i));
+void csv_row_free(csv_row *csv_row) {
+	for (int i = 0; i < csv_row->field_counter; i++) {
+		free(*(csv_row->contents + i));
 	}
-	free(line->contents);
-	free(line);
+	free(csv_row->contents);
+	free(csv_row);
 }
