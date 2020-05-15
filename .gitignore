@@ -56,6 +56,8 @@ CMakeLists.txt.user
 CMakeCache.txt
 CMakeFiles
 CMakeScripts
+CMakeDoxyfile.in
+CMakeDoxygenDefaults.cmake
 Testing
 Makefile
 cmake_install.cmake
@@ -129,4 +131,6 @@ local.properties
 # Progetto
 doxygen/*
 build/*
+docs/*
 !/**/.gitkeep
+gestione-magazzino
