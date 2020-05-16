@@ -10,6 +10,7 @@
 typedef struct {
 	char *filepath; /**< Percorso del file. */  
 	int field_counter; /**< Numero di campi per riga del file. */  
+	char field_separator; /**< Carattere dedicato alla separazione dei campi per le righe. */  
 
 	int has_header; /**< Flag per indicare la presenza o meno di un header. */  
 	char **header; /**< Contenuti dell'header separati per campo. */  
@@ -42,6 +43,7 @@ void csv_write(csv_file *file, int line_number, char *content);
 
 /**
  * Libera la memoria dinamica utilizzata per lo struct CSV.
+ * Attenzione: la funzione si aspetta uno struct instanziato tramite allocazione dinamica della memoria, e procede di conseguenza alla liberazione dello struct stesso.
  * 
  * @param file Puntatore al file CSV
  */

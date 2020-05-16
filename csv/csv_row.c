@@ -44,10 +44,13 @@ int csv_row_wrap(csv_row *row, FILE *fp) {
 	// Inizializzazione della stringa per il salvataggio dei campi in memoria
 	int length, index;
 	char *line;
-	int field_end = 1; // Flag per la generazione di un nuovo campo
-	int line_end = 0;
 
-	char c;
+	// Carattere separatore
+	char separator = row->csv->field_separator;
+
+	char c;	// Carattere corrente
+	int field_end = 1; // Flag per la generazione di un nuovo campo
+	int line_end = 0; // Flag per segnalare la fine della riga
 	while (!line_end) {
 		// Lettura del carattere
 		c = fgetc(fp);
@@ -60,7 +63,7 @@ int csv_row_wrap(csv_row *row, FILE *fp) {
 			line = malloc(sizeof(char) * length);
 			check_allocation(line);
 
-			field_end = 0;
+			field_end = 0; // Ripristino flag di chiusura del campo
 		}
 
 		// Allargamento della stringa
@@ -72,7 +75,7 @@ int csv_row_wrap(csv_row *row, FILE *fp) {
 
 		// Controllo sullo stato del campo
 		line_end = (c == '\n' || c == EOF);
-		field_end = (c == ';' || line_end);
+		field_end = (c == separator || line_end);
 
 		// Scrittura del carattere nella stringa generale
 		*(line + index) = field_end ? '\0' : c;
@@ -112,15 +115,19 @@ char* csv_row_to_line(csv_row *row) {
 		length += strlen(*(row->contents + i));
 	}
 
+	char separator = row->csv->field_separator;
+
+	// Allocazione dinamica della memoria per i contenuti dell'intera riga
 	char *contents = malloc(sizeof(char) * length);
 	check_allocation(contents);
 
 	for (int i = 0; i < row->field_counter; i++) {
 		if (i != 0) {
-			contents = strcat(contents, ";");
+			contents = strncat(contents, &separator, 1);
 		}
 
-		contents = strcat(contents, *(row->contents + i));
+		char* content = *(row->contents + i);
+		contents = strcat(contents, content);
 	}
 
 	return contents;
@@ -132,9 +139,11 @@ char* csv_row_field(csv_row *row, char *name) {
 		return NULL;
 	}
 
+	// Informazioni dell'header
 	char **header = row->csv->header;
 	int field_counter = row->csv->field_counter;
 
+	// Ricerca del campo richiesto nell'header
 	int index = -1;
 	for (int i = 0; i < field_counter; i++) {
 		if (strcmp(name, *(header + i)) == 0) {
@@ -146,20 +155,23 @@ char* csv_row_field(csv_row *row, char *name) {
 }
 
 char* csv_row_field_by_index(csv_row *row, int index) {
-	int field_counter = row->field_counter;
-	char **contents = row->contents;
-
-	if (index >= field_counter || index < 0) {
+	// Verifica locale degli indici
+	if (index >= row->field_counter || index < 0) {
 		return NULL;
 	}
 
-	return *(contents + index);
+	return *(row->contents + index);
 }
 
 void csv_row_free(csv_row *row) {
+	// Liberazione dei singoli campi
 	for (int i = 0; i < row->field_counter; i++) {
 		free(*(row->contents + i));
 	}
+
+	// Liberazione dell'array dei campi
 	free(row->contents);
+
+	// Liberazione dello struct dalla memoria dinamica
 	free(row);
 }

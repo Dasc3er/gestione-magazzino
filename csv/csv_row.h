@@ -49,6 +49,7 @@ char* csv_row_field_by_index(csv_row *row, int index);
 
 /**
  * Libera la memoria dinamica utilizzata per lo struct della riga CSV.
+ * Attenzione: la funzione si aspetta uno struct instanziato tramite allocazione dinamica della memoria, e procede di conseguenza alla liberazione dello struct stesso.
  * 
  * @param row Puntatore alla riga
  */

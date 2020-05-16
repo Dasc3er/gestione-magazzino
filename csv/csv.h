@@ -1,3 +1,6 @@
+/**
+ * File utilizzato per l'importazione della libreria tramite un singolo header.
+ */
 #ifndef CSV_H_
 #define CSV_H_
 

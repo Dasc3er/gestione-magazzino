@@ -12,6 +12,8 @@ csv_file* csv_init(char *filepath, int has_header) {
 	pointer->current_byte = 0;
 	pointer->line_counter = 0;
 
+	pointer->field_separator = ';';
+
 	// Lettura dell'header (se presente)
 	csv_row *header = csv_read_line(pointer);
 
@@ -47,7 +49,7 @@ void csv_write(csv_file *file, int line_number, char *content) {
 	char *filename = malloc(char_size * (strlen(file->filepath) + strlen(template) + 1));
 	if (filename == NULL) {
 		fprintf(stderr, "Errore di allocazione dinamica\n");
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 	sprintf(filename, "%s%s", file->filepath, template);
 	mkstemp(filename);
@@ -56,7 +58,7 @@ void csv_write(csv_file *file, int line_number, char *content) {
 	int result = rename(file->filepath, filename);
 	if (result != 0) {
 		printf("Errore nel salvataggio del file\n");
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 
 	// Apertura dei file
@@ -64,7 +66,7 @@ void csv_write(csv_file *file, int line_number, char *content) {
 	FILE *writer = fopen(file->filepath, "w+");
 	if (writer == NULL || reader == NULL) {
 		printf("Errore nel salvataggio del file\n");
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 
 	int inserted = 0;

@@ -55,6 +55,7 @@ csv_records* csv_read(csv_file *file) {
 	length = index;
 	contents = realloc(contents, pointer_size * length);
 
+	// Salvataggio dei risultati
 	results->results = contents;
 	results->length = length;
 
@@ -62,12 +63,16 @@ csv_records* csv_read(csv_file *file) {
 }
 
 void csv_records_free(csv_records *records) {
+	// Liberazione delle singole righe
 	for (int i = 0; i < records->length; i++) {
 		csv_row *line = *(records->results + i);
-		free(line);
+		csv_row_free(line);
 	}
 
+	// Liberazione dell'array dei risultati
 	free(records->results);
+
+	// Liberazione dello struct dalla memoria dinamica
 	free(records);
 }
 

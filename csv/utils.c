@@ -4,7 +4,7 @@
 void check_allocation(void *pointer) {
 	if (pointer == NULL) {
 		fprintf(stderr, "Errore di allocazione dinamica\n");
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 }
 
@@ -13,7 +13,7 @@ FILE* file_open(char *filepath) {
 	FILE *fp = fopen(filepath, "r+");
 	if (fp == NULL) {
 		fprintf(stderr, "Impossibile aprire il file %s\n", filepath);
-		exit(1);
+		exit(EXIT_FAILURE);
 	}
 
 	// Ripristino all'inizio del file
