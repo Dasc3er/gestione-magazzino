@@ -131,7 +131,5 @@ local.properties
 # Progetto
 .vscode/
 doxygen/*
-build/*
-docs/*
 !/**/.gitkeep
 gestione-magazzino

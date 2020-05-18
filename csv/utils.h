@@ -1,12 +1,12 @@
-#ifndef UTILS_H_
-#define UTILS_H_
+#ifndef CSV_UTILS_H_
+#define CSV_UTILS_H_
 
 #include <stdio.h>
 
 void check_allocation(void *pointer);
 
-FILE* file_open(char *filepath);
+FILE* csv_file_open(char *filepath);
 
-void file_close(FILE *file);
+void csv_file_close(FILE *file);
 
-#endif /* UTILS_H_ */
+#endif /* CSV_UTILS_H_ */

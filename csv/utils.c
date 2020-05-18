@@ -8,7 +8,7 @@ void check_allocation(void *pointer) {
 	}
 }
 
-FILE* file_open(char *filepath) {
+FILE* csv_file_open(char *filepath) {
 	// Apertura del file
 	FILE *fp = fopen(filepath, "r+");
 	if (fp == NULL) {
@@ -22,6 +22,6 @@ FILE* file_open(char *filepath) {
 	return fp;
 }
 
-void file_close(FILE *file) {
+void csv_file_close(FILE *file) {
 	fclose(file);
 }

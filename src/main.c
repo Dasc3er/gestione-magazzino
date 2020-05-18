@@ -2,26 +2,16 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
-#include <limits.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 #include "csv.h"
-
-// Colori per l'output
-#define COLOR_RED() printf("\033[1;31m");
-#define COLOR_GREEN() printf("\033[0;32m");
-#define COLOR_RESET() printf("\033[0m");
+#include "utils.h"
+#include "magazzino.h"
+#include "storico.h"
 
 void menu(char *options[], int length);
 void init(char *path, csv_file **csv_magazzino, csv_file **csv_storico);
-char *get_cwd();
-char *read_line();
-void input_cleanup();
-
-int esci(csv_file *csv_magazzino, csv_file *csv_storico);
-int visualizza_magazzino(csv_file *csv_magazzino, csv_file *csv_storico);
-int storico_totale(csv_file *csv_magazzino, csv_file *csv_storico);
-int storico_articolo(csv_file *csv_magazzino, csv_file *csv_storico);
+void esci(csv_file *csv_magazzino, csv_file *csv_storico);
 
 int main()
 {
@@ -47,18 +37,22 @@ int main()
 		"Visualizza il magazzino",
 		"Visualizza lo storico dei movimenti totale",
 		"Visualizza lo storico dei movimenti per un articolo",
+		"Movimenta un articolo del magazzino",
 		"Inserisci un nuovo articolo nel magazzino",
 		"Modifica un articolo del magazzino",
-		"Movimenta un articolo del magazzino",
 		"Rimuovi un articolo dal magazzino",
 	};
 	int length = sizeof(options) / sizeof(options[0]);
 
-	int (*functions[])(csv_file *, csv_file *) = {
+	void (*functions[])(csv_file *, csv_file *) = {
 		esci,
 		visualizza_magazzino,
 		storico_totale,
 		storico_articolo,
+		movimenta_articolo,
+		inserisci_articolo,
+		modifica_articolo,
+		rimuovi_articolo,
 	};
 
 	// Messaggio di benvenuto
@@ -74,7 +68,11 @@ int main()
 		int selection = -1;
 		printf("Opzione selezionata: ");
 		scanf("%d", &selection);
-		input_cleanup();
+
+		// Cleanup del buffer
+		int c;
+		while ((c = getchar()) != '\n' && c != EOF)
+			;
 
 		if (selection >= 0 && selection < length)
 		{
@@ -118,9 +116,6 @@ void init(char *path, csv_file **csv_magazzino, csv_file **csv_storico)
 	char *storico = malloc(char_size * (directory_length + strlen(magazzino_filename) + 2));
 	if (magazzino == NULL || storico == NULL)
 	{
-		COLOR_RED();
-		printf("Errore di allocazione dinamica\n");
-		COLOR_RESET();
 		fprintf(stderr, "Errore di allocazione dinamica\n");
 		exit(EXIT_FAILURE);
 	}
@@ -152,7 +147,7 @@ void init(char *path, csv_file **csv_magazzino, csv_file **csv_storico)
 	*csv_storico = csv_init(storico, 1);
 }
 
-int esci(csv_file *csv_magazzino, csv_file *csv_storico)
+void esci(csv_file *csv_magazzino, csv_file *csv_storico)
 {
 	COLOR_GREEN();
 	printf("Grazie per aver utilizzato questo programma!\n");
@@ -162,138 +157,4 @@ int esci(csv_file *csv_magazzino, csv_file *csv_storico)
 	csv_free(csv_storico);
 
 	exit(EXIT_SUCCESS);
-}
-
-char *get_cwd()
-{
-	char *cwd;
-	char buff[PATH_MAX + 1];
-
-	cwd = getcwd(buff, PATH_MAX + 1);
-	return cwd;
-}
-
-int visualizza_magazzino(csv_file *csv_magazzino, csv_file *csv_storico)
-{
-	csv_records *records = csv_read(csv_magazzino);
-
-	// Visualizzazione grafica
-	printf("======================================================================\n");
-	printf(" %-10s | %-40s | %-10s \n", "Codice", "Descrizione", "Quantità");
-	printf("======================================================================\n");
-
-	for (int i = 0; i < records->length; i++)
-	{
-		csv_row *line = *(records->results + i);
-		char *codice = csv_row_field(line, "Codice");
-		char *descrizione = csv_row_field(line, "Descrizione");
-		char *quantita = csv_row_field(line, "Quantità");
-
-		printf(" %-10s | %-40s | %-10s \n", codice, descrizione, quantita);
-	}
-}
-
-int storico_totale(csv_file *csv_magazzino, csv_file *csv_storico)
-{
-	csv_records *records = csv_read(csv_storico);
-
-	// Visualizzazione grafica
-	printf("======================================================================\n");
-	printf(" %-10s | %-40s | %-10s \n", "Data", "Codice", "Quantità");
-	printf("======================================================================\n");
-
-	for (int i = 0; i < records->length; i++)
-	{
-		csv_row *line = *(records->results + i);
-		char *data = csv_row_field(line, "Data");
-		char *codice = csv_row_field(line, "Codice");
-		char *quantita = csv_row_field(line, "Quantità");
-
-		printf(" %-10s | %-40s | %-10s \n", data, codice, quantita);
-	}
-
-	// Liberazione della memoria allocata
-	csv_records_free(records);
-}
-
-int storico_articolo(csv_file *csv_magazzino, csv_file *csv_storico)
-{
-	char *codice_articolo;
-	int i = 0;
-	while (i == 0)
-	{
-		printf("Codice dell'articolo da filtrare: ");
-		codice_articolo = read_line();
-		i = strlen(codice_articolo);
-	}
-
-	csv_records *records = csv_read(csv_storico);
-
-	// Visualizzazione grafica
-	printf("======================================================================\n");
-	printf(" %-10s | %-40s | %-10s \n", "Data", "Codice", "Quantità");
-	printf("======================================================================\n");
-
-	for (int i = 0; i < records->length; i++)
-	{
-		csv_row *line = *(records->results + i);
-		char *codice = csv_row_field(line, "Codice");
-
-		// Filtro sulla base del codice dell'articolo
-		if (strcmp(codice_articolo, codice) != 0)
-		{
-			continue;
-		}
-
-		char *data = csv_row_field(line, "Data");
-		char *quantita = csv_row_field(line, "Quantità");
-
-		printf(" %-10s | %-40s | %-10s \n", data, codice, quantita);
-	}
-
-	// Liberazione della memoria allocata
-	csv_records_free(records);
-}
-
-char *read_line()
-{
-	// Inizializzazione della stringa
-	int length = 100;
-	int size = sizeof(char);
-	char *result = malloc(size * length);
-
-	int i = 0;
-	int end = 0;
-	while (!end)
-	{
-		// Allargamento dinamico dello spazio
-		if (i >= length)
-		{
-			length = length * 2;
-			result = realloc(result, size * length);
-			check_allocation(result);
-		}
-
-		// Controllo sui caratteri
-		char c = getchar();
-		end = (c == '\n' || c == EOF);
-
-		// Salvataggio del carattere corrente
-		*(result + i) = end ? '\0' : c;
-		i++;
-	}
-
-	// Restrizione dello spazio
-	length = i;
-	result = realloc(result, size * length);
-	check_allocation(result);
-
-	return result;
-}
-
-void input_cleanup()
-{
-	// Cleanup del buffer
-	int c;
-	while ((c = getchar()) != '\n' && c != EOF);
 }

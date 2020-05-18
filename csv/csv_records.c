@@ -15,7 +15,7 @@ csv_records* csv_read(csv_file *file) {
 	check_allocation(contents);
 
 	// Apertura del file
-	FILE *fp = file_open(file->filepath);
+	FILE *fp = csv_file_open(file->filepath);
 
 	// Rimozione dell'header dai risultati
 	if (file->has_header) {
@@ -49,7 +49,7 @@ csv_records* csv_read(csv_file *file) {
 	}
 
 	// Chiusura del file
-	file_close(fp);
+	csv_file_close(fp);
 
 	// Reallocazione finale
 	length = index;

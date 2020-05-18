@@ -18,6 +18,9 @@ include_directories(${CMAKE_SOURCE_DIR}/csv)
 # Creazione eseguibile
 set(SOURCES
 	src/main.c
+	src/magazzino.c
+	src/storico.c
+	src/utils.c
 )
 
 add_executable(gestione-magazzino ${SOURCES})

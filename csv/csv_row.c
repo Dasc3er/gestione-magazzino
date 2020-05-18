@@ -8,10 +8,10 @@ csv_row* csv_read_line(csv_file *file) {
 	line->csv = file;
 
 	// Lettura della riga
-	FILE *fp = file_open(file->filepath);
+	FILE *fp = csv_file_open(file->filepath);
 	fseek(fp, file->current_byte, SEEK_SET);
 	int error = csv_row_wrap(line, fp);
-	file_close(fp);
+	csv_file_close(fp);
 
 	// Restituzione di NULL nel caso in cui il record successivo non sia raggiungibile
 	if (error) {
