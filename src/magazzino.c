@@ -1,5 +1,7 @@
 #include <string.h>
+#include <stdlib.h>
 #include "magazzino.h"
+#include "utils.h"
 
 void visualizza_magazzino(csv_file *csv_magazzino, csv_file *csv_storico)
 {
@@ -21,9 +23,14 @@ void visualizza_magazzino(csv_file *csv_magazzino, csv_file *csv_storico)
 	}
 }
 
-csv_row *cerca_articolo(csv_file *csv_magazzino, char *codice_articolo)
+csv_row *cerca_articolo(csv_file *csv_magazzino)
 {
-	csv_magazzino->current_byte = csv_magazzino->header_bytes;
+	// Richiesta del codice all'utente
+	printf("Codice dell'articolo da cercare: ");
+	char *codice_articolo = read_content();
+
+	// Ripristino inizio del file
+	csv_reset(csv_magazzino);
 
 	int found = 0;
 	csv_row *row = csv_read_line(csv_magazzino);
@@ -45,7 +52,24 @@ csv_row *cerca_articolo(csv_file *csv_magazzino, char *codice_articolo)
 		}
 	}
 
+	// Liberazione della memoria allocata per il codice articolo
+	free(codice_articolo);
+
+	// Messaggio di successo o fallimento ricerca
+	if (row != NULL)
+	{
+		printf("Articolo individuato: %s\n", csv_row_field(row, "Descrizione"));
+	}
+	else
+	{
+		printf("Impossibile trovare un articolo con il codice indicato\n");
+	}
+
 	return row;
+}
+
+void articoli_esaurimento(csv_file *csv_magazzino, csv_file *csv_storico)
+{
 }
 
 void inserisci_articolo(csv_file *csv_magazzino, csv_file *csv_storico)
@@ -58,4 +82,15 @@ void modifica_articolo(csv_file *csv_magazzino, csv_file *csv_storico)
 
 void rimuovi_articolo(csv_file *csv_magazzino, csv_file *csv_storico)
 {
+	// Ricerca articolo
+	csv_row *row = cerca_articolo(csv_magazzino);
+	if (row != NULL)
+	{
+		// Rimozione articolo
+		printf("%d\n", row->line_number);
+		csv_write(row->csv, row->line_number, "");
+		csv_row_free(row);
+
+		printf("Articolo rimosso!");
+	}
 }

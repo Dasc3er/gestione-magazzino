@@ -68,14 +68,9 @@ void storico_articolo(csv_file *csv_magazzino, csv_file *csv_storico)
 }
 
 void movimenta_articolo(csv_file *csv_magazzino, csv_file *csv_storico) {
-	printf("Codice dell'articolo da filtrare: ");
-	char *codice_articolo = read_content();
-
-	csv_row * row = cerca_articolo(csv_magazzino, codice_articolo);
+	csv_row * row = cerca_articolo(csv_magazzino);
 	if (row != NULL)
-	{
-		printf("Articolo individuato: %s\n", csv_row_field(row, "Descrizione"));
-		
+	{		
 		float qta_attuale = atof(csv_row_field(row, "Quantità"));
 		printf("Quantità attuale: %f\n", qta_attuale);
 
@@ -91,10 +86,4 @@ void movimenta_articolo(csv_file *csv_magazzino, csv_file *csv_storico) {
 		// Liberazione della memoria allocata per la riga
 		csv_row_free(row);
 	}
-	else {
-		printf("Impossibile trovare un articolo con il codice indicato\n");
-	}
-
-	// Liberazione della memoria allocata per il codice articolo
-	free(codice_articolo);
 }

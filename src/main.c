@@ -35,6 +35,7 @@ int main()
 	char *options[] = {
 		"Esci",
 		"Visualizza il magazzino",
+		"Visualizza articoli a rischio esaurimento",
 		"Visualizza lo storico dei movimenti totale",
 		"Visualizza lo storico dei movimenti per un articolo",
 		"Movimenta un articolo del magazzino",
@@ -47,6 +48,7 @@ int main()
 	void (*functions[])(csv_file *, csv_file *) = {
 		esci,
 		visualizza_magazzino,
+		articoli_esaurimento,
 		storico_totale,
 		storico_articolo,
 		movimenta_articolo,
@@ -134,7 +136,7 @@ void init(char *path, csv_file **csv_magazzino, csv_file **csv_storico)
 	if (access(magazzino, F_OK) == -1)
 	{
 		FILE *pointer = fopen(magazzino, "w");
-		fputs("Codice;Descrizione;Quantità", pointer);
+		fputs("Codice;Descrizione;Quantità;Quantità minima", pointer);
 		fclose(pointer);
 
 		pointer = fopen(storico, "w");
@@ -153,6 +155,7 @@ void esci(csv_file *csv_magazzino, csv_file *csv_storico)
 	printf("Grazie per aver utilizzato questo programma!\n");
 	COLOR_RESET();
 
+	// Liberazione della memoria allocata per i file CSV
 	csv_free(csv_magazzino);
 	csv_free(csv_storico);
 

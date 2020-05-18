@@ -28,6 +28,7 @@ csv_file* csv_init(char *filepath, int has_header) {
 		free(header->contents);
 	}
 
+	// Liberazione della memoria per lo struct dell'header
 	free(header);
 
 	return pointer;
@@ -42,7 +43,7 @@ void csv_free(csv_file *file) {
 }
 
 void csv_write(csv_file *file, int line_number, char *content) {
-	// Spostamento del file originale in uno temporaneo
+	// Creazzione nome temporaneo
 	int char_size = sizeof(char);
 	char *template = "XXXXXX";
 
@@ -54,7 +55,7 @@ void csv_write(csv_file *file, int line_number, char *content) {
 	sprintf(filename, "%s%s", file->filepath, template);
 	mkstemp(filename);
 
-	// Spostamento
+	// Spostamento del file originale
 	int result = rename(file->filepath, filename);
 	if (result != 0) {
 		printf("Errore nel salvataggio del file\n");
@@ -70,9 +71,11 @@ void csv_write(csv_file *file, int line_number, char *content) {
 	}
 
 	int inserted = 0;
-	int line_counter = 0;
+	int line_counter = file->has_header ? -1 : 0; // Ignoro la riga di header nel conteggio delle righe
 	char c = fgetc(reader);
 	while (c != EOF) {
+		printf("%d %d\n",line_counter, line_number);
+
 		// Linea normale
 		if (line_counter != line_number) {
 			fputc(c, writer);
@@ -132,4 +135,10 @@ void csv_write(csv_file *file, int line_number, char *content) {
 	// Rimozione del file temporaneo
 	remove(filename);
 	free(filename);
+}
+
+void csv_reset(csv_file *file){
+	// Ripristino inizio del file
+	file->current_byte = file->header_bytes;
+	file->line_counter = 0;
 }

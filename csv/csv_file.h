@@ -49,4 +49,11 @@ void csv_write(csv_file *file, int line_number, char *content);
  */
 void csv_free(csv_file *file);
 
+/**
+ * Imposta i contatori del file CSV per la lettura dalla prima riga.
+ * 
+ * @param file Puntatore al file CSV
+ */
+void csv_reset(csv_file *file);
+
 #endif /* CSV_FILE_H_ */

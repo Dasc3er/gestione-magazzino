@@ -5,7 +5,9 @@
 
 void visualizza_magazzino(csv_file *csv_magazzino, csv_file *csv_storico);
 
-csv_row *cerca_articolo(csv_file *csv_magazzino, char *codice_articolo);
+void articoli_esaurimento(csv_file *csv_magazzino, csv_file *csv_storico);
+
+csv_row *cerca_articolo(csv_file *csv_magazzino);
 
 void inserisci_articolo(csv_file *csv_magazzino, csv_file *csv_storico);
 

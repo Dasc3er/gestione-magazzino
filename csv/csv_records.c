@@ -14,15 +14,14 @@ csv_records* csv_read(csv_file *file) {
 	csv_row **contents = malloc(pointer_size * length);
 	check_allocation(contents);
 
+	// Ripristino inizio del file
+	csv_reset(file);
+
 	// Apertura del file
 	FILE *fp = csv_file_open(file->filepath);
 
 	// Rimozione dell'header dai risultati
-	if (file->has_header) {
-		fseek(fp, file->header_bytes, SEEK_SET);
-	} else {
-		fseek(fp, 0L, SEEK_SET);
-	}
+	fseek(fp, file->header_bytes, SEEK_SET);
 
 	// Lettura delle righe
 	int error = 0;
