@@ -17,9 +17,11 @@ void visualizza_magazzino(csv_file *csv_magazzino, csv_file *csv_storico)
 		csv_row *line = *(records->results + i);
 		char *codice = csv_row_field(line, "Codice");
 		char *descrizione = csv_row_field(line, "Descrizione");
-		char *quantita = csv_row_field(line, "Quantità");
 
-		printf(" %-10s | %-40s | %-10s \n", codice, descrizione, quantita);
+		// Lettura quantità e conversione in float
+		float quantita = atof(csv_row_field(line, "Quantità"));
+
+		printf(" %-10s | %-40s | %8.1f \n", codice, descrizione, quantita);
 	}
 }
 
@@ -87,7 +89,6 @@ void rimuovi_articolo(csv_file *csv_magazzino, csv_file *csv_storico)
 	if (row != NULL)
 	{
 		// Rimozione articolo
-		printf("%d\n", row->line_number);
 		csv_write(row->csv, row->line_number, "");
 		csv_row_free(row);
 

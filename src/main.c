@@ -114,8 +114,8 @@ void init(char *path, csv_file **csv_magazzino, csv_file **csv_storico)
 	int char_size = sizeof(char);
 
 	char *directory = malloc(char_size * directory_length);
-	char *magazzino = malloc(char_size * (directory_length + strlen(magazzino_filename) + 2));
-	char *storico = malloc(char_size * (directory_length + strlen(magazzino_filename) + 2));
+	char *magazzino = malloc(char_size * (directory_length + strlen(magazzino_filename) + 1));
+	char *storico = malloc(char_size * (directory_length + strlen(storico_filename) + 1));
 	if (magazzino == NULL || storico == NULL)
 	{
 		fprintf(stderr, "Errore di allocazione dinamica\n");
@@ -138,8 +138,11 @@ void init(char *path, csv_file **csv_magazzino, csv_file **csv_storico)
 		FILE *pointer = fopen(magazzino, "w");
 		fputs("Codice;Descrizione;Quantità;Quantità minima", pointer);
 		fclose(pointer);
+	}
 
-		pointer = fopen(storico, "w");
+	if (access(storico, F_OK) == -1)
+	{
+		FILE *pointer = fopen(storico, "w");
 		fputs("Data;Codice;Quantità", pointer);
 		fclose(pointer);
 	}
