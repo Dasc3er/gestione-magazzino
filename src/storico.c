@@ -44,7 +44,7 @@ void storico_articolo(csv_file *csv_magazzino, csv_file *csv_storico)
 
 	// Visualizzazione grafica
 	TABLE_HEADER_SEP(TABLE_HEADER_LENTGH);
-	printf(" %-10s | %-40s | %-10s \n", "Data", "Codice", "Quantità");
+	printf(" %-10s | %-40s | %10s \n", "Data", "Codice", "Quantità");
 	TABLE_HEADER_SEP(TABLE_HEADER_LENTGH);
 
 	for (int i = 0; i < records->length; i++)
@@ -59,9 +59,9 @@ void storico_articolo(csv_file *csv_magazzino, csv_file *csv_storico)
 		}
 
 		char *data = csv_row_field(line, "Data");
-		char *quantita = csv_row_field(line, "Quantità");
+		float quantita = atof(csv_row_field(line, "Quantità"));
 
-		printf(" %-10s | %-40s | %-10s \n", data, codice, quantita);
+		printf(" %-10s | %-40s | %9.1f \n", data, codice, quantita);
 	}
 
 	// Liberazione della memoria allocata
@@ -72,21 +72,38 @@ void storico_articolo(csv_file *csv_magazzino, csv_file *csv_storico)
 void movimenta_articolo(csv_file *csv_magazzino, csv_file *csv_storico)
 {
 	csv_row *row = cerca_articolo(csv_magazzino);
-	if (row != NULL)
+	// Controllo sull'individuazione della riga
+	if (row == NULL)
 	{
-		float qta_attuale = atof(csv_row_field(row, "Quantità"));
-		printf("Quantità attuale: %f\n", qta_attuale);
-
-		printf("Nuova quantità [vuoto per lasciare invariato]: ");
-
-		// Lettura della quantità come stringa, per liberare il buffer di input
-		char *quantita = read_line();
-		float qta = atof(quantita);
-
-		float diff = qta - qta_attuale;
-		printf("\nMovimentazione effettiva: %f\n", diff);
-
-		// Liberazione della memoria allocata per la riga
-		csv_row_free(row);
+		return;
 	}
+
+	// Lettura della quantità dalla riga
+	float qta_attuale = atof(csv_row_field(row, "Quantità"));
+	printf("Quantità attuale: %9.1f\n", qta_attuale);
+
+	// Lettura della quantità come stringa, per liberare il buffer di input
+	printf("Nuova quantità [vuoto per lasciare invariato]: ");
+	char *quantita = read_line();
+
+	float qta = atof(quantita);
+	float diff = qta - qta_attuale;
+	// Operazioni per la movimentazione
+	if (strlen(quantita) != 0 && diff != 0)
+	{
+		printf("\nMovimentazione effettiva: %.1f\n", diff);
+
+		// Lettura della data attuale in formato stringa
+		char * data = get_date_string();
+		printf("%s\n", data);
+	}
+	// Operazioni nel caso di non movimentazione
+	else
+	{
+		printf("\nNessuna movimentazione effettuata!\n");
+	}
+
+	// Liberazione della memoria allocata per la riga
+	csv_row_free(row);
+	free(quantita);
 }

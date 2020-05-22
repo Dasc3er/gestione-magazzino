@@ -78,4 +78,14 @@ int csv_row_wrap(csv_row *row, FILE *fp);
  */
 char *csv_row_to_line(csv_row *row);
 
+/**
+ * Inizializza uno struct di riga vuota per il file CSV indicato.
+ * Attenzione: per il salvataggio fisico in un file CSV, l'utilizzatore deve impostare i contenuti della riga di conseguenza poichè non vengono inzializzati dalla funzione.
+ * 
+ * @param file Puntatore al file CSV per cui creare la riga
+ * 
+ * @return Puntatore allo struct creato
+ */
+csv_row *csv_row_create(csv_file *file);
+
 #endif /* CSV_ROW_H_ */

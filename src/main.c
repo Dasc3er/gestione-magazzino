@@ -136,14 +136,14 @@ void init(char *path, csv_file **csv_magazzino, csv_file **csv_storico)
 	if (access(magazzino, F_OK) == -1)
 	{
 		FILE *pointer = fopen(magazzino, "w");
-		fputs("Codice;Descrizione;Quantità;Quantità minima", pointer);
+		fputs("Codice,Descrizione,Quantità,Quantità minima", pointer);
 		fclose(pointer);
 	}
 
 	if (access(storico, F_OK) == -1)
 	{
 		FILE *pointer = fopen(storico, "w");
-		fputs("Data;Codice;Quantità", pointer);
+		fputs("Data,Codice,Quantità", pointer);
 		fclose(pointer);
 	}
 

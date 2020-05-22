@@ -31,6 +31,7 @@ int csv_row_wrap(csv_row *row, FILE *fp)
 	size_t pointer_size = sizeof(char *);
 	int content_size = 0;
 	char **contents = malloc(pointer_size * content_size);
+	check_allocation(contents);
 
 	// Avanzamento per evitare la molteplice lettura di singole righe
 	long current_byte = ftell(fp);
@@ -106,8 +107,8 @@ int csv_row_wrap(csv_row *row, FILE *fp)
 	// Aggiornamento riga del CSV
 	row->contents = contents;
 	row->field_counter = content_size;
-	row->line_number = row->csv->line_counter;
-	row->bytes = bytes_counter;
+	row->line_number = row->csv->line_counter; // Campo utilizzato per le righe
+	row->bytes = bytes_counter;				   // Campo utilizzato per l'header
 
 	// Aggiornamento CSV
 	row->csv->line_counter = row->csv->line_counter + 1;
@@ -128,7 +129,7 @@ char *csv_row_to_line(csv_row *row)
 	char separator = row->csv->field_separator;
 
 	// Allocazione dinamica della memoria per i contenuti dell'intera riga
-	char *contents = malloc(sizeof(char) * length);
+	char *contents = calloc(length, sizeof(char));
 	check_allocation(contents);
 
 	for (int i = 0; i < row->field_counter; i++)
@@ -138,8 +139,8 @@ char *csv_row_to_line(csv_row *row)
 			contents = strncat(contents, &separator, 1);
 		}
 
-		char *content = *(row->contents + i);
-		contents = strcat(contents, content);
+		char *field_content = *(row->contents + i);
+		contents = strcat(contents, field_content);
 	}
 
 	return contents;
@@ -177,4 +178,20 @@ void csv_row_free(csv_row *row)
 
 	// Liberazione dello struct dalla memoria dinamica
 	free(row);
+}
+
+csv_row *csv_row_create(csv_file *file)
+{
+	// Inizializzazione struct
+	csv_row *row = malloc(sizeof(csv_row));
+	row->csv = file;
+	row->field_counter = file->field_counter;
+
+	// Inizializzazione dei contenuti
+	size_t pointer_size = sizeof(char *);
+	char **contents = malloc(pointer_size * row->field_counter);
+	check_allocation(contents);
+	row->contents = contents;
+
+	return row;
 }
