@@ -5,12 +5,13 @@
 
 void visualizza_magazzino(csv_file *csv_magazzino, csv_file *csv_storico)
 {
+	// Richiesta di tutte le righe in memoria
 	csv_records *records = csv_read(csv_magazzino);
 
 	// Visualizzazione grafica
-	printf("======================================================================\n");
-	printf(" %-10s | %-40s | %-10s \n", "Codice", "Descrizione", "Quantità");
-	printf("======================================================================\n");
+	TABLE_HEADER_SEP(TABLE_HEADER_LENTGH);
+	printf(" %-10s | %-40s | %10s \n", "Codice", "Descrizione", "Quantità");
+	TABLE_HEADER_SEP(TABLE_HEADER_LENTGH);
 
 	for (int i = 0; i < records->length; i++)
 	{
@@ -21,7 +22,7 @@ void visualizza_magazzino(csv_file *csv_magazzino, csv_file *csv_storico)
 		// Lettura quantità e conversione in float
 		float quantita = atof(csv_row_field(line, "Quantità"));
 
-		printf(" %-10s | %-40s | %8.1f \n", codice, descrizione, quantita);
+		printf(" %-10s | %-40s | %9.1f \n", codice, descrizione, quantita);
 	}
 }
 
@@ -72,6 +73,40 @@ csv_row *cerca_articolo(csv_file *csv_magazzino)
 
 void articoli_esaurimento(csv_file *csv_magazzino, csv_file *csv_storico)
 {
+	int index_qta = csv_header_field_index(csv_magazzino, "Quantità");
+	int index_qta_minima = csv_header_field_index(csv_magazzino, "Quantità minima");
+	if (index_qta == -1 || index_qta_minima == -1)
+	{
+		printf("Impossibile individuare gli articoli in esaurimento a causa della mancanza dei campi Quantità e/o Quantià minima");
+	}
+
+	// Visualizzazione grafica
+	TABLE_HEADER_SEP(TABLE_HEADER_LENTGH);
+	printf(" %-10s | %-40s | %10s | %20s \n", "Codice", "Descrizione", "Quantità", "Quantità minima");
+	TABLE_HEADER_SEP(TABLE_HEADER_LENTGH);
+
+	// Ciclo riga per riga
+	csv_row *row = csv_read_line(csv_magazzino);
+	while (row != NULL)
+	{
+		// Lettura quantità e confronto diretto
+		float quantita = atof(csv_row_field_by_index(row, index_qta));
+		float quantita_minima = atof(csv_row_field_by_index(row, index_qta_minima));
+		
+		if (quantita <= quantita_minima)
+		{
+			char *codice = csv_row_field(row, "Codice");
+			char *descrizione = csv_row_field(row, "Descrizione");
+
+			printf(" %-10s | %-40s | %9.1f | %19.1f \n", codice, descrizione, quantita, quantita_minima);
+		}
+		
+		// Liberazione memoria allocata
+		csv_row_free(row);
+
+		// Lettura riga successiva
+		row = csv_read_line(csv_magazzino);
+	}
 }
 
 void inserisci_articolo(csv_file *csv_magazzino, csv_file *csv_storico)

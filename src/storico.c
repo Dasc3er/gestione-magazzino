@@ -6,12 +6,13 @@
 
 void storico_totale(csv_file *csv_magazzino, csv_file *csv_storico)
 {
+	// Richiesta di tutte le righe in memoria
 	csv_records *records = csv_read(csv_storico);
 
 	// Visualizzazione grafica
-	printf("======================================================================\n");
+	TABLE_HEADER_SEP(TABLE_HEADER_LENTGH);
 	printf(" %-10s | %-40s | %-10s \n", "Data", "Codice", "Quantità");
-	printf("======================================================================\n");
+	TABLE_HEADER_SEP(TABLE_HEADER_LENTGH);
 
 	for (int i = 0; i < records->length; i++)
 	{
@@ -38,12 +39,13 @@ void storico_articolo(csv_file *csv_magazzino, csv_file *csv_storico)
 		length = strlen(codice_articolo);
 	}
 
+	// Richiesta di tutte le righe in memoria
 	csv_records *records = csv_read(csv_storico);
 
 	// Visualizzazione grafica
-	printf("======================================================================\n");
+	TABLE_HEADER_SEP(TABLE_HEADER_LENTGH);
 	printf(" %-10s | %-40s | %-10s \n", "Data", "Codice", "Quantità");
-	printf("======================================================================\n");
+	TABLE_HEADER_SEP(TABLE_HEADER_LENTGH);
 
 	for (int i = 0; i < records->length; i++)
 	{
@@ -67,10 +69,11 @@ void storico_articolo(csv_file *csv_magazzino, csv_file *csv_storico)
 	free(codice_articolo);
 }
 
-void movimenta_articolo(csv_file *csv_magazzino, csv_file *csv_storico) {
-	csv_row * row = cerca_articolo(csv_magazzino);
+void movimenta_articolo(csv_file *csv_magazzino, csv_file *csv_storico)
+{
+	csv_row *row = cerca_articolo(csv_magazzino);
 	if (row != NULL)
-	{		
+	{
 		float qta_attuale = atof(csv_row_field(row, "Quantità"));
 		printf("Quantità attuale: %f\n", qta_attuale);
 

@@ -6,6 +6,17 @@
 #define COLOR_GREEN() printf("\033[0;32m");
 #define COLOR_RESET() printf("\033[0m");
 
+#define TABLE_HEADER_LENTGH 100
+#define TABLE_HEADER_SEP(length)    \
+    do                              \
+    {                               \
+        for (int i = 0; i < (length); i++) \
+        {                           \
+            putchar('=');           \
+        }                           \
+        putchar('\n');              \
+    } while (0)
+
 char *get_cwd();
 
 char *read_line();
