@@ -54,15 +54,15 @@ char *read_line()
     return result;
 }
 
-char * read_content()
+char *read_content()
 {
     char *content;
-	int length = 0;
-	while (length == 0)
-	{
-		content = read_line();
-		length = strlen(content);
-	}
+    int length = 0;
+    while (length == 0)
+    {
+        content = read_line();
+        length = strlen(content);
+    }
 
     return content;
 }

@@ -8,9 +8,10 @@
 /**
  * Struct per aggregare una sequenza di righe.
  */
-typedef struct {
-	int length; /**< Numero di elementi nell'elenco. */  
-	csv_row **results; /**< Puntatori alle righe. */  
+typedef struct
+{
+	int length;		   /**< Numero di elementi nell'elenco. */
+	csv_row **results; /**< Puntatori alle righe. */
 } csv_records;
 
 /**
@@ -20,7 +21,7 @@ typedef struct {
 
  * @return Puntatore allo struct contenete le righe del file.
  */
-csv_records* csv_read(csv_file *file);
+csv_records *csv_read(csv_file *file);
 
 /**
  * Libera la memoria dinamica utilizzata per lo struct dei record CSV.
@@ -33,7 +34,8 @@ void csv_records_free(csv_records *records);
 /**
  * Struct per indicare i filtri da applicare nella lettura delle righe.
  */
-typedef struct {
+typedef struct
+{
 	char *field;
 	int field_number;
 

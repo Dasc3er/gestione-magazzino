@@ -27,6 +27,8 @@ typedef struct {
  *
  * @param filepath Percorso per il file CSV da leggere
  * @param has_header Flag per la lettura o meno della prima riga come header
+ * 
+ * @return Puntatore allo struct CSV inizializzato di conseguenza
  */
 csv_file* csv_init(char *filepath, int has_header);
 
@@ -55,5 +57,25 @@ void csv_free(csv_file *file);
  * @param file Puntatore al file CSV
  */
 void csv_reset(csv_file *file);
+
+/**
+ * Restituisce un puntatore alla stringa contenente il nome del campo indicato tramite indice.
+ * 
+ * @param file Puntatore al file CSV
+ * @param index Indice del campo richiesto
+ * 
+ * @return Puntatore al contenuto del campo se esiste, altrimenti a NULL
+ */
+char * csv_header_field(csv_file *file, int index);
+
+/**
+ * Restituisce l'indice del campo che corrisponde alla stringa indicata.
+ * 
+ * @param file Puntatore al file CSV
+ * @param field Puntatore alla stringa da ricercare nell'header
+ * 
+ * @return Indice del campo se esiste, altrimenti -1
+ */
+int csv_header_field_index(csv_file *file, char * field);
 
 #endif /* CSV_FILE_H_ */

@@ -7,13 +7,14 @@
 /**
  * Struct per la rappresentazione delle informazioni di una riga.
  */
-typedef struct {
-	csv_file *csv;/**< Puntatore al file CSV di roginie. */  
-	int field_counter; /**< Numero di campi della riga (per facilitare la navigazione). */  
+typedef struct
+{
+	csv_file *csv;	   /**< Puntatore al file CSV di roginie. */
+	int field_counter; /**< Numero di campi della riga (per facilitare la navigazione). */
 
-	long line_number; /**< Numero della riga (a partire da 0). */  
-	long bytes; /**< Numero di byte occupati dalla riga. */  
-	char **contents; /**< Puntatori ai campi contenuti dalla riga. */  
+	long line_number; /**< Numero della riga (a partire da 0). */
+	long bytes;		  /**< Numero di byte occupati dalla riga. */
+	char **contents;  /**< Puntatori ai campi contenuti dalla riga. */
 } csv_row;
 
 /**
@@ -23,7 +24,7 @@ typedef struct {
  * 
  * @return Puntatore allo struct riga creato, oppure a NULL se la riga è vuota.
  */
-csv_row* csv_read_line(csv_file *csv);
+csv_row *csv_read_line(csv_file *csv);
 
 /**
  * Restituisce il contenuto del campo (idetificato tramite nome relativo) all'interno di una riga CSV.
@@ -35,7 +36,7 @@ csv_row* csv_read_line(csv_file *csv);
  * 
  * @return Puntatore al contenuto del campo per la riga indicata, oppure a NULL se il campo non è presente.
  */
-char* csv_row_field(csv_row *row, char *name);
+char *csv_row_field(csv_row *row, char *name);
 
 /**
  * Restituisce il contenuto del campo (idetificato tramite indice relativo) all'interno di una riga CSV.
@@ -45,7 +46,7 @@ char* csv_row_field(csv_row *row, char *name);
  * 
  * @return Puntatore al contenuto del campo per la riga indicata, oppure a NULL se il campo non è presente.
  */
-char* csv_row_field_by_index(csv_row *row, int index);
+char *csv_row_field_by_index(csv_row *row, int index);
 
 /**
  * Libera la memoria dinamica utilizzata per lo struct della riga CSV.
@@ -75,6 +76,6 @@ int csv_row_wrap(csv_row *row, FILE *fp);
  * 
  * @return Puntatore alla stringa in formato CSV
  */
-char * csv_row_to_line(csv_row *row);
+char *csv_row_to_line(csv_row *row);
 
 #endif /* CSV_ROW_H_ */

@@ -10,6 +10,6 @@ char *get_cwd();
 
 char *read_line();
 
-char * read_content();
+char *read_content();
 
 #endif /* UTILS_H_ */

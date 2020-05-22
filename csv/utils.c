@@ -1,17 +1,21 @@
 #include <stdlib.h>
 #include "utils.h"
 
-void check_allocation(void *pointer) {
-	if (pointer == NULL) {
+void check_allocation(void *pointer)
+{
+	if (pointer == NULL)
+	{
 		fprintf(stderr, "Errore di allocazione dinamica\n");
 		exit(EXIT_FAILURE);
 	}
 }
 
-FILE* csv_file_open(char *filepath) {
+FILE *csv_file_open(char *filepath)
+{
 	// Apertura del file
 	FILE *fp = fopen(filepath, "r+");
-	if (fp == NULL) {
+	if (fp == NULL)
+	{
 		fprintf(stderr, "Impossibile aprire il file %s\n", filepath);
 		exit(EXIT_FAILURE);
 	}
@@ -22,6 +26,7 @@ FILE* csv_file_open(char *filepath) {
 	return fp;
 }
 
-void csv_file_close(FILE *file) {
+void csv_file_close(FILE *file)
+{
 	fclose(file);
 }

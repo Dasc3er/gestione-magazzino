@@ -3,14 +3,15 @@
 #include "csv_row.h"
 #include "utils.h"
 
-csv_records* csv_read(csv_file *file) {
+csv_records *csv_read(csv_file *file)
+{
 	// Inizializzazione del contenitore dei record
 	csv_records *results = malloc(sizeof(csv_records));
 	check_allocation(results);
 	results->length = 0;
 
 	int length = 100;
-	size_t pointer_size = sizeof(csv_row*);
+	size_t pointer_size = sizeof(csv_row *);
 	csv_row **contents = malloc(pointer_size * length);
 	check_allocation(contents);
 
@@ -26,9 +27,11 @@ csv_records* csv_read(csv_file *file) {
 	// Lettura delle righe
 	int error = 0;
 	int index = 0;
-	while (!error) {
+	while (!error)
+	{
 		// Allargamento dell'elenco risultati
-		if (index >= length) {
+		if (index >= length)
+		{
 			length = length * 2;
 			contents = realloc(contents, pointer_size * length);
 			check_allocation(contents);
@@ -39,9 +42,12 @@ csv_records* csv_read(csv_file *file) {
 		line->csv = file;
 
 		error = csv_row_wrap(line, fp);
-		if (error) {
+		if (error)
+		{
 			free(line);
-		} else {
+		}
+		else
+		{
 			*(contents + index) = line;
 			index++;
 		}
@@ -61,9 +67,11 @@ csv_records* csv_read(csv_file *file) {
 	return results;
 }
 
-void csv_records_free(csv_records *records) {
+void csv_records_free(csv_records *records)
+{
 	// Liberazione delle singole righe
-	for (int i = 0; i < records->length; i++) {
+	for (int i = 0; i < records->length; i++)
+	{
 		csv_row *line = *(records->results + i);
 		csv_row_free(line);
 	}
@@ -74,4 +82,3 @@ void csv_records_free(csv_records *records) {
 	// Liberazione dello struct dalla memoria dinamica
 	free(records);
 }
-

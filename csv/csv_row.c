@@ -3,7 +3,8 @@
 #include <string.h>
 #include "utils.h"
 
-csv_row* csv_read_line(csv_file *file) {
+csv_row *csv_read_line(csv_file *file)
+{
 	csv_row *line = malloc(sizeof(csv_row));
 	line->csv = file;
 
@@ -14,7 +15,8 @@ csv_row* csv_read_line(csv_file *file) {
 	csv_file_close(fp);
 
 	// Restituzione di NULL nel caso in cui il record successivo non sia raggiungibile
-	if (error) {
+	if (error)
+	{
 		free(line);
 
 		return NULL;
@@ -23,9 +25,10 @@ csv_row* csv_read_line(csv_file *file) {
 	return line;
 }
 
-int csv_row_wrap(csv_row *row, FILE *fp) {
+int csv_row_wrap(csv_row *row, FILE *fp)
+{
 	// Inizializzazione del puntatore all'array di campi
-	size_t pointer_size = sizeof(char*);
+	size_t pointer_size = sizeof(char *);
 	int content_size = 0;
 	char **contents = malloc(pointer_size * content_size);
 
@@ -34,7 +37,8 @@ int csv_row_wrap(csv_row *row, FILE *fp) {
 	fseek(fp, 0L, SEEK_END);
 	long size = ftell(fp);
 
-	if (current_byte >= size) {
+	if (current_byte >= size)
+	{
 		return 1;
 	}
 
@@ -48,16 +52,18 @@ int csv_row_wrap(csv_row *row, FILE *fp) {
 	// Carattere separatore
 	char separator = row->csv->field_separator;
 
-	char c;	// Carattere corrente
+	char c;			   // Carattere corrente
 	int field_end = 1; // Flag per la generazione di un nuovo campo
-	int line_end = 0; // Flag per segnalare la fine della riga
-	while (!line_end) {
+	int line_end = 0;  // Flag per segnalare la fine della riga
+	while (!line_end)
+	{
 		// Lettura del carattere
 		c = fgetc(fp);
 		bytes_counter++;
 
 		// Allocazione di una nuova stringa
-		if (field_end) {
+		if (field_end)
+		{
 			index = 0;
 			length = 100;
 			line = malloc(sizeof(char) * length);
@@ -67,7 +73,8 @@ int csv_row_wrap(csv_row *row, FILE *fp) {
 		}
 
 		// Allargamento della stringa
-		if (index >= length) {
+		if (index >= length)
+		{
 			length = length * 2;
 			line = realloc(line, sizeof(char) * length);
 			check_allocation(line);
@@ -82,7 +89,8 @@ int csv_row_wrap(csv_row *row, FILE *fp) {
 		index++;
 
 		// Salvataggio del campo separatamente
-		if (field_end && index != 1) {
+		if (field_end && index != 1)
+		{
 			// Restrizione della stringa alla dimensione attuale
 			line = realloc(line, sizeof(char) * index);
 			check_allocation(line);
@@ -108,10 +116,12 @@ int csv_row_wrap(csv_row *row, FILE *fp) {
 	return 0;
 }
 
-char* csv_row_to_line(csv_row *row) {
+char *csv_row_to_line(csv_row *row)
+{
 	// Dimensione della stringa da allocare
 	long length = (row->field_counter - 1) + 1; // Numero di separatori + 1 per la chiusura della stringa
-	for (int i = 0; i < row->field_counter; i++) {
+	for (int i = 0; i < row->field_counter; i++)
+	{
 		length += strlen(*(row->contents + i));
 	}
 
@@ -121,51 +131,44 @@ char* csv_row_to_line(csv_row *row) {
 	char *contents = malloc(sizeof(char) * length);
 	check_allocation(contents);
 
-	for (int i = 0; i < row->field_counter; i++) {
-		if (i != 0) {
+	for (int i = 0; i < row->field_counter; i++)
+	{
+		if (i != 0)
+		{
 			contents = strncat(contents, &separator, 1);
 		}
 
-		char* content = *(row->contents + i);
+		char *content = *(row->contents + i);
 		contents = strcat(contents, content);
 	}
 
 	return contents;
 }
 
-char* csv_row_field(csv_row *row, char *name) {
-	// Controllo sull'inizializzazione dell'header
-	if (!row->csv->has_header) {
-		return NULL;
-	}
-
-	// Informazioni dell'header
-	char **header = row->csv->header;
-	int field_counter = row->csv->field_counter;
-
-	// Ricerca del campo richiesto nell'header
-	int index = -1;
-	for (int i = 0; i < field_counter; i++) {
-		if (strcmp(name, *(header + i)) == 0) {
-			index = i;
-		}
-	}
+char *csv_row_field(csv_row *row, char *name)
+{
+	// Ricerca del campo nell'header
+	int index = csv_header_field_index(row->csv, name);
 
 	return csv_row_field_by_index(row, index);
 }
 
-char* csv_row_field_by_index(csv_row *row, int index) {
+char *csv_row_field_by_index(csv_row *row, int index)
+{
 	// Verifica locale degli indici
-	if (index >= row->field_counter || index < 0) {
+	if (index >= row->field_counter || index < 0)
+	{
 		return NULL;
 	}
 
 	return *(row->contents + index);
 }
 
-void csv_row_free(csv_row *row) {
+void csv_row_free(csv_row *row)
+{
 	// Liberazione dei singoli campi
-	for (int i = 0; i < row->field_counter; i++) {
+	for (int i = 0; i < row->field_counter; i++)
+	{
 		free(*(row->contents + i));
 	}
 
