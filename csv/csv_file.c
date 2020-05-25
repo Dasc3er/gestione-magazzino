@@ -90,7 +90,9 @@ void csv_write(csv_file *file, int line_number, char *content)
 		exit(EXIT_FAILURE);
 	}
 
+	// Flag per la scrittura
 	int inserted = 0;
+	int newline = 0;
 	int was_last_line_empty = 1;
 	int line_counter = file->has_header ? 0 : 1; // Linea 0 riservata all'header
 
@@ -104,37 +106,45 @@ void csv_write(csv_file *file, int line_number, char *content)
 		if (strlen(content) != 0)
 		{
 			was_last_line_empty = 0;
+			newline = 1;
 		}
 	}
 
-	size_t buffer_size = 32, characters;
-	char *buffer;
-
-	// Allocazione dinamica
-	buffer = malloc(buffer_size * sizeof(char));
-	check_allocation(buffer);
-
-	// Lettura linea da file
-	characters = getline(&buffer, &buffer_size, reader);
-	while (characters != -1)
+	// Iterazione carattere per carattere
+	int line_length = 0;
+	char c = fgetc(reader);
+	while (c != EOF)
 	{
 		// Aggiunta del carattere di invio a capo solo se necessario
 		if (
+			newline &&
 			!was_last_line_empty &&
-			(line_counter != line_number || strlen(content) != 0)
-			)
+			(line_counter != line_number || strlen(content) != 0))
 		{
 			fputc('\n', writer);
 		}
+		newline = 0;
 
 		// Linea normale
 		if (line_counter != line_number)
 		{
-			int length = strlen(buffer) - 1;
-			buffer[length] = '\0'; // Rimozione invio a capo automatico
-			fputs(buffer, writer);
+			// Nuova riga
+			if (c == '\n')
+			{
+				line_counter++;
 
-			was_last_line_empty = (length == 0);
+				// Controllo sulle dimensioni della linea
+				newline = 1;
+				was_last_line_empty = line_length == 0;
+				line_length = 0;
+			}
+			// Carattere interno alla riga
+			else
+			{
+				fputc(c, writer);
+
+				line_length++; // Conteggio dei caratteri della riga
+			}
 		}
 
 		// Linea da sostituire
@@ -144,22 +154,19 @@ void csv_write(csv_file *file, int line_number, char *content)
 			fputs(content, writer);
 			inserted = 1;
 
-			was_last_line_empty = strlen(content) == 0;
+			newline = 1;
+
+			// Rimozione della riga dal file originale
+			line_counter++;
+			while (c != '\n' && c != EOF)
+			{
+				c = fgetc(reader);
+			}
 		}
 
-		// Conteggio della riga
-		line_counter++;
-		free(buffer);
-
-		// Allocazione dinamica
-		buffer = malloc(buffer_size * sizeof(char));
-		check_allocation(buffer);
-
-		// Lettura linea da file
-		characters = getline(&buffer, &buffer_size, reader);
+		// Lettura del carattere successivo
+		c = fgetc(reader);
 	}
-
-	free(buffer);
 
 	// Aggiunta della riga come suffisso al file (APPEND)
 	if (!inserted || line_number >= line_counter)
