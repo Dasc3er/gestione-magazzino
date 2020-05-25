@@ -143,7 +143,7 @@ void init(char *path, csv_file **csv_magazzino, csv_file **csv_storico)
 	if (access(storico, F_OK) == -1)
 	{
 		FILE *pointer = fopen(storico, "w");
-		fputs("Data,Codice,Quantità", pointer);
+		fputs("Data,Codice,Descrizione,Quantità", pointer);
 		fclose(pointer);
 	}
 

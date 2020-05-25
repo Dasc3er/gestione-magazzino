@@ -11,7 +11,7 @@ csv_file *csv_init(char *filepath, int has_header)
 	pointer->filepath = filepath;
 	pointer->has_header = has_header != 0;
 	pointer->current_byte = 0;
-	pointer->line_counter = 0;
+	pointer->line_counter = 1; // Linea 0 riservata all'header
 
 	pointer->field_separator = ',';
 
@@ -34,6 +34,9 @@ csv_file *csv_init(char *filepath, int has_header)
 
 	// Liberazione della memoria per lo struct dell'header
 	free(header);
+
+	// Reimpostazione dello struct
+	csv_reset(pointer);
 
 	return pointer;
 }
@@ -81,12 +84,21 @@ void csv_write(csv_file *file, int line_number, char *content)
 	}
 
 	int inserted = 0;
-	int line_counter = file->has_header ? -1 : 0; // Ignoro la riga di header nel conteggio delle righe
+	int insert_newline = strlen(content) != 0;
+
+	// Aggiunta della riga come prefisso al file (PREPEND)
+	if (line_number == -1)
+	{
+		fputs(content, writer);
+		if (insert_newline)
+			fputc('\n', writer);
+		inserted = 1;
+	}
+
+	int line_counter = file->has_header ? 0 : 1; // Linea 0 riservata all'header
 	char c = fgetc(reader);
 	while (c != EOF)
 	{
-		printf("%d %d\n", line_counter, line_number);
-
 		// Linea normale
 		if (line_counter != line_number)
 		{
@@ -102,20 +114,14 @@ void csv_write(csv_file *file, int line_number, char *content)
 		// Linea da sostituire
 		else
 		{
-			line_counter++;
+			// Scrittura del nuovo contenuto
+			fputs(content, writer);
+			if (insert_newline)
+				fputc('\n', writer);
 			inserted = 1;
-			int index = 0;
 
-			// Lettura del primo carattere disponibile
-			char cl = *(content);
-			while (cl != '\0')
-			{
-				fputc(cl, writer);
-				index++;
-
-				// Lettura carattere successivo
-				cl = *(content + index);
-			}
+			// Impostazione della riga come scritta
+			line_counter++;
 
 			// Rimozione della riga dal file originale
 			while (c != '\n' && c != EOF)
@@ -128,22 +134,13 @@ void csv_write(csv_file *file, int line_number, char *content)
 		c = fgetc(reader);
 	}
 
-	// Aggiunta della riga se il numero era eccessivamente elevato
-	if (!inserted && line_number >= line_counter)
+	// Aggiunta della riga come suffisso al file (APPEND)
+	if (!inserted || line_number >= line_counter)
 	{
-		line_counter++;
-
-		int index = 0;
-		// Lettura del primo carattere disponibile
-		char cl = *(content);
-		while (cl != '\0')
-		{
-			fputc(cl, writer);
-			index++;
-
-			// Lettura carattere successivo
-			cl = *(content + index);
-		}
+		if (insert_newline)
+			fputc('\n', writer);
+		fputs(content, writer);
+		inserted = 1;
 	}
 
 	// Chiusura dei file
@@ -159,7 +156,7 @@ void csv_reset(csv_file *file)
 {
 	// Ripristino inizio del file
 	file->current_byte = file->header_bytes;
-	file->line_counter = 0;
+	file->line_counter = 1;
 }
 
 char *csv_header_field(csv_file *file, int index)

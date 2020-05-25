@@ -55,6 +55,9 @@ csv_row *cerca_articolo(csv_file *csv_magazzino)
 		}
 	}
 
+	// Ripristino del file CSV
+	csv_reset(csv_magazzino);
+
 	// Liberazione della memoria allocata per il codice articolo
 	free(codice_articolo);
 
@@ -85,6 +88,9 @@ void articoli_esaurimento(csv_file *csv_magazzino, csv_file *csv_storico)
 	printf(" %-10s | %-40s | %10s | %20s \n", "Codice", "Descrizione", "Quantità", "Quantità minima");
 	TABLE_HEADER_SEP(TABLE_HEADER_LENTGH);
 
+	// Ripristino del file CSV
+	csv_reset(csv_magazzino);
+
 	// Ciclo riga per riga
 	csv_row *row = csv_read_line(csv_magazzino);
 	while (row != NULL)
@@ -92,7 +98,7 @@ void articoli_esaurimento(csv_file *csv_magazzino, csv_file *csv_storico)
 		// Lettura quantità e confronto diretto
 		float quantita = atof(csv_row_field_by_index(row, index_qta));
 		float quantita_minima = atof(csv_row_field_by_index(row, index_qta_minima));
-		
+
 		if (quantita <= quantita_minima)
 		{
 			char *codice = csv_row_field(row, "Codice");
@@ -100,13 +106,16 @@ void articoli_esaurimento(csv_file *csv_magazzino, csv_file *csv_storico)
 
 			printf(" %-10s | %-40s | %9.1f | %19.1f \n", codice, descrizione, quantita, quantita_minima);
 		}
-		
+
 		// Liberazione memoria allocata
 		csv_row_free(row);
 
 		// Lettura riga successiva
 		row = csv_read_line(csv_magazzino);
 	}
+
+	// Ripristino del file CSV
+	csv_reset(csv_magazzino);
 }
 
 void inserisci_articolo(csv_file *csv_magazzino, csv_file *csv_storico)

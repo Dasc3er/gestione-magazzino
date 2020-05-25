@@ -10,7 +10,7 @@
  */
 typedef struct
 {
-	int length;		   /**< Numero di elementi nell'elenco. */
+	long length;		   /**< Numero di elementi nell'elenco. */
 	csv_row **results; /**< Puntatori alle righe. */
 } csv_records;
 

@@ -17,16 +17,16 @@ char *get_cwd()
 char *read_line()
 {
     // Inizializzazione della stringa
-    int length = 100;
+    long length = 100;
     int size = sizeof(char);
     char *result = malloc(size * length);
 
-    int i = 0;
+    long index = 0;
     int end = 0;
     while (!end)
     {
         // Allargamento dinamico dello spazio
-        if (i >= length)
+        if (index >= length)
         {
             length = length * 2;
             result = realloc(result, size * length);
@@ -43,13 +43,12 @@ char *read_line()
         end = (c == '\n' || c == EOF);
 
         // Salvataggio del carattere corrente
-        *(result + i) = end ? '\0' : c;
-        i++;
+        *(result + index) = end ? '\0' : c;
+        index++;
     }
 
     // Restrizione dello spazio
-    length = i;
-    result = realloc(result, size * length);
+    result = realloc(result, size * index);
 
     return result;
 }
@@ -75,7 +74,7 @@ char *get_date_string()
 
     // Conversione data in stringa
     char *data = malloc(20 * sizeof(char));
-    sprintf(data, "%d-%02d-%02d %02d:%02d:%02d\n", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
+    sprintf(data, "%d-%02d-%02d %02d:%02d:%02d", tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday, tm.tm_hour, tm.tm_min, tm.tm_sec);
 
     return data;
 }

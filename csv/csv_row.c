@@ -47,7 +47,7 @@ int csv_row_wrap(csv_row *row, FILE *fp)
 	long bytes_counter = 0;
 
 	// Inizializzazione della stringa per il salvataggio dei campi in memoria
-	int length, index;
+	long length, index;
 	char *line;
 
 	// Carattere separatore
@@ -123,7 +123,10 @@ char *csv_row_to_line(csv_row *row)
 	long length = (row->field_counter - 1) + 1; // Numero di separatori + 1 per la chiusura della stringa
 	for (int i = 0; i < row->field_counter; i++)
 	{
-		length += strlen(*(row->contents + i));
+		char *field = *(row->contents + i);
+		long field_length = field != NULL ? strlen(field) : 0; // Supporto a puntatori non inizializzati
+
+		length += field_length;
 	}
 
 	char separator = row->csv->field_separator;
@@ -140,7 +143,10 @@ char *csv_row_to_line(csv_row *row)
 		}
 
 		char *field_content = *(row->contents + i);
-		contents = strcat(contents, field_content);
+		if (field_content != NULL)
+		{
+			contents = strcat(contents, field_content);
+		}
 	}
 
 	return contents;
@@ -187,11 +193,32 @@ csv_row *csv_row_create(csv_file *file)
 	row->csv = file;
 	row->field_counter = file->field_counter;
 
-	// Inizializzazione dei contenuti
-	size_t pointer_size = sizeof(char *);
-	char **contents = malloc(pointer_size * row->field_counter);
+	row->line_number = -2; // Impostazione del numero di riga per APPEND
+
+	// Inizializzazione a NULL dei contenuti
+	char **contents = malloc(sizeof(char *) * row->field_counter);
 	check_allocation(contents);
+	for (int i = 0; i < row->field_counter; i++)
+	{
+		contents[i] = NULL;
+	}
 	row->contents = contents;
 
 	return row;
+}
+
+char *csv_row_field_set(csv_row *row, char *name, char *content)
+{
+	// Ricerca del campo nell'header
+	int index = csv_header_field_index(row->csv, name);
+
+	if (index >= row->field_counter || index < 0)
+	{
+		return NULL;
+	}
+
+	char *previous = *(row->contents + index);
+	*(row->contents + index) = content;
+
+	return previous;
 }

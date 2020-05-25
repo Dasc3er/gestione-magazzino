@@ -10,7 +10,7 @@ csv_records *csv_read(csv_file *file)
 	check_allocation(results);
 	results->length = 0;
 
-	int length = 100;
+	long length = 100;
 	size_t pointer_size = sizeof(csv_row *);
 	csv_row **contents = malloc(pointer_size * length);
 	check_allocation(contents);
@@ -26,7 +26,7 @@ csv_records *csv_read(csv_file *file)
 
 	// Lettura delle righe
 	int error = 0;
-	int index = 0;
+	long index = 0;
 	while (!error)
 	{
 		// Allargamento dell'elenco risultati
@@ -57,12 +57,14 @@ csv_records *csv_read(csv_file *file)
 	csv_file_close(fp);
 
 	// Reallocazione finale
-	length = index;
-	contents = realloc(contents, pointer_size * length);
+	contents = realloc(contents, pointer_size * index);
 
 	// Salvataggio dei risultati
 	results->results = contents;
-	results->length = length;
+	results->length = index;
+
+	// Ripristino del file CSV
+	csv_reset(file);
 
 	return results;
 }

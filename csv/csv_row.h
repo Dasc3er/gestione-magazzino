@@ -32,7 +32,7 @@ csv_row *csv_read_line(csv_file *csv);
  * Il nome del campo viene utilizzato per l'individuazione dell'indice relativo a partire dall'header del file CSV.
  * 
  * @param row Puntatore alla riga 
- * @param name Nome del campo richiesto
+ * @param name Puntatore al nome del campo richiesto
  * 
  * @return Puntatore al contenuto del campo per la riga indicata, oppure a NULL se il campo non è presente.
  */
@@ -47,6 +47,20 @@ char *csv_row_field(csv_row *row, char *name);
  * @return Puntatore al contenuto del campo per la riga indicata, oppure a NULL se il campo non è presente.
  */
 char *csv_row_field_by_index(csv_row *row, int index);
+
+/**
+ * Imposta il contenuto del campo (idetificato tramite nome relativo) all'interno di una riga CSV.
+ * 
+ * Il nome del campo viene utilizzato per l'individuazione dell'indice relativo a partire dall'header del file CSV.
+ * Attenzione: la memoria allocata per il contenuto precedente non viene liberata in automatico.
+ * 
+ * @param row Puntatore alla riga 
+ * @param name Puntatore al nome del campo richiesto
+ * @param content Putantotre al nuovo contenuto
+ * 
+ * @return Puntatore al contenuto precedente del campo per la riga indicata, oppure a NULL se il campo non è presente.
+ */
+char *csv_row_field_set(csv_row *row, char *name, char *content);
 
 /**
  * Libera la memoria dinamica utilizzata per lo struct della riga CSV.
@@ -79,8 +93,7 @@ int csv_row_wrap(csv_row *row, FILE *fp);
 char *csv_row_to_line(csv_row *row);
 
 /**
- * Inizializza uno struct di riga vuota per il file CSV indicato.
- * Attenzione: per il salvataggio fisico in un file CSV, l'utilizzatore deve impostare i contenuti della riga di conseguenza poichè non vengono inzializzati dalla funzione.
+ * Inizializza uno struct di riga vuota per il file CSV indicato, con i contenuti impostati automaticamente a NULL.
  * 
  * @param file Puntatore al file CSV per cui creare la riga
  * 

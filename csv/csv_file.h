@@ -7,17 +7,18 @@
  * 
  * Per gestire la lettura separata delle singole righe, viene introdotto un contattore di byte che permette di lavorare in modo separato sulle righe.
  */
-typedef struct {
-	char *filepath; /**< Percorso del file. */  
-	int field_counter; /**< Numero di campi per riga del file. */  
-	char field_separator; /**< Carattere dedicato alla separazione dei campi per le righe. */  
+typedef struct
+{
+	char *filepath;		  /**< Percorso del file. */
+	int field_counter;	  /**< Numero di campi per riga del file. */
+	char field_separator; /**< Carattere dedicato alla separazione dei campi per le righe. */
 
-	int has_header; /**< Flag per indicare la presenza o meno di un header. */  
-	char **header; /**< Contenuti dell'header separati per campo. */  
-	long header_bytes; /**< Numero di bytes dell'header. */  
+	int has_header;	   /**< Flag per indicare la presenza o meno di un header. */
+	char **header;	   /**< Contenuti dell'header separati per campo. */
+	long header_bytes; /**< Numero di bytes dell'header. */
 
-	long current_byte; /**< Byte corrente nella lettura in sequenza delle righe. */  
-	long line_counter; /**< Riga corrente nella lettura in sequenza delle righe. */  
+	long current_byte; /**< Byte corrente nella lettura in sequenza delle righe. */
+	long line_counter; /**< Riga corrente nella lettura in sequenza delle righe. */
 } csv_file;
 
 /**
@@ -30,16 +31,17 @@ typedef struct {
  * 
  * @return Puntatore allo struct CSV inizializzato di conseguenza
  */
-csv_file* csv_init(char *filepath, int has_header);
+csv_file *csv_init(char *filepath, int has_header);
 
 /**
- * Funzione per la scrittura di un contenuto in una riga specifica del file CSV.
+ * Funzione per la scrittura di un contenuto in una riga specifica del file CSV. Il nuovo contenuto non deve contenere il carattere di invio a capo, che viene inserito automaticamente in base al numero di riga indicato.
+ * Se il numero di riga inserito è eccessivamente elevato oppure non presente nel file originale, il contenuto verrà inserito in modalità APPEND. Il numero di riga "-1" assume il significato di inserimento in modalità PREPEND.
  * 
  * Attenzione: l'utilizzo di questa funzione può rendere invalido il contatore line_number delle righe del CSV salvate in memoria.
  * 
  * @param csv Puntatore al file CSV
  * @param line_number Numero di riga su cui effettuare la scrittura
- * @param content Contenuto da inserire nella riga indicata, deve contenere il carattere di invio a capo
+ * @param content Contenuto da inserire nella riga indicata
  */
 void csv_write(csv_file *file, int line_number, char *content);
 
@@ -66,7 +68,7 @@ void csv_reset(csv_file *file);
  * 
  * @return Puntatore al contenuto del campo se esiste, altrimenti a NULL
  */
-char * csv_header_field(csv_file *file, int index);
+char *csv_header_field(csv_file *file, int index);
 
 /**
  * Restituisce l'indice del campo che corrisponde alla stringa indicata.
@@ -76,6 +78,6 @@ char * csv_header_field(csv_file *file, int index);
  * 
  * @return Indice del campo se esiste, altrimenti -1
  */
-int csv_header_field_index(csv_file *file, char * field);
+int csv_header_field_index(csv_file *file, char *field);
 
 #endif /* CSV_FILE_H_ */
