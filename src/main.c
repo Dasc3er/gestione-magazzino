@@ -23,7 +23,7 @@ int main()
 	{
 		COLOR_RED();
 		printf("Impossibile individuare il percorso corrente\n");
-		COLOR_RESET();
+		TEXT_RESET();
 		exit(EXIT_FAILURE);
 	}
 
@@ -61,7 +61,7 @@ int main()
 	COLOR_GREEN();
 	printf("Benvenuto nel programma di gestione magazzino!\n");
 	printf("Percorso corrente: %s\n\n", path);
-	COLOR_RESET();
+	TEXT_RESET();
 
 	menu(options, length);
 
@@ -88,7 +88,7 @@ int main()
 		{
 			COLOR_RED();
 			printf("\nAttenzione: sono accettate solo le opzioni sopra indicate\n");
-			COLOR_RESET();
+			TEXT_RESET();
 		}
 	}
 }
@@ -156,7 +156,7 @@ void esci(csv_file *csv_magazzino, csv_file *csv_storico)
 {
 	COLOR_GREEN();
 	printf("Grazie per aver utilizzato questo programma!\n");
-	COLOR_RESET();
+	TEXT_RESET();
 
 	// Liberazione della memoria allocata per i file CSV
 	csv_free(csv_magazzino);

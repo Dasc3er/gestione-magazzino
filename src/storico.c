@@ -126,7 +126,8 @@ void movimenta_articolo(csv_file *csv_magazzino, csv_file *csv_storico)
 		csv_row_free(riga);
 
 		// Aggiornamento della quantità dell'articolo nel magazzino
-		csv_row_field_set(articolo, "Quantità", quantita);
+		char * previous = csv_row_field_set(articolo, "Quantità", quantita);
+		free(previous);
 
 		char *articolo_line = csv_row_to_line(articolo);
 		csv_write(csv_magazzino, articolo->line_number, articolo_line);

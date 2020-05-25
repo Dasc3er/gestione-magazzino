@@ -120,10 +120,105 @@ void articoli_esaurimento(csv_file *csv_magazzino, csv_file *csv_storico)
 
 void inserisci_articolo(csv_file *csv_magazzino, csv_file *csv_storico)
 {
+	// Creazione riga dello storico
+	csv_row *articolo = csv_row_create(csv_magazzino);
+
+	inserisci_dati(articolo);
+
+	char * line = csv_row_to_line(articolo);
+	csv_write(csv_magazzino, articolo->line_number, line);
+	free(line);
 }
 
 void modifica_articolo(csv_file *csv_magazzino, csv_file *csv_storico)
 {
+	// Controllo sull'individuazione della riga
+	csv_row *articolo = cerca_articolo(csv_magazzino);
+	if (articolo == NULL)
+	{
+		return;
+	}
+
+	inserisci_dati(articolo);
+
+	char * line = csv_row_to_line(articolo);
+	csv_write(csv_magazzino, articolo->line_number, line);
+	free(line);
+}
+
+void inserisci_dati(csv_row *row)
+{
+	char *string_fields[] = {
+		"Codice",
+		"Descrizione",
+	};
+	int string_length = sizeof(string_fields) / sizeof(string_fields[0]);
+
+	// Operazioni di input per i campi di tipo stringa
+	for (int i = 0; i < string_length; i++)
+	{
+		char *content = inserisci_campo(row, string_fields[i]);
+
+		// Salvataggio del nuovo valore
+		if (content != NULL)
+		{
+			csv_row_field_set(row, string_fields[i], content);
+		}
+	}
+
+	char *float_fields[] = {
+		"Quantità",
+		"Quantità minima",
+	};
+	int float_length = sizeof(float_fields) / sizeof(float_fields[0]);
+
+	// Operazioni di input per i campi di tipo stringa
+	for (int i = 0; i < float_length; i++)
+	{
+		char *content = inserisci_campo(row, float_fields[i]);
+
+		// Salvataggio del nuovo valore
+		if (content != NULL)
+		{
+			float valore = atof(content);
+			printf("Contento individuato: %f\n", valore);
+
+			char *conversione = malloc(50 * sizeof(char)); // Limite a 50 caratteri
+			sprintf(conversione, "%f", valore);
+
+			csv_row_field_set(row, float_fields[i], conversione);
+		}
+	}
+}
+
+char *inserisci_campo(csv_row *row, char *field)
+{
+	// Richiesta del campo all'utente
+	TEXT_BOLD();
+	printf("\n%s\n", field);
+	TEXT_RESET();
+
+	// Visualizzazione del valore precedente
+	char *valore_attuale = csv_row_field(row, field);
+	if (valore_attuale != NULL)
+	{
+		printf("Valore attuale: %s\n", valore_attuale);
+	}
+
+	// Richiesta del nuovo valore
+	printf("Nuovo valore [vuoto per mantente il contenuto corrente]: ");
+	char *content = read_line();
+
+	// Restituzione del nuovo valore
+	if (strlen(content) == 0)
+	{
+		return NULL;
+	}
+
+	// Liberazione della memoria per il valore precedente
+	free(valore_attuale);
+
+	return content;
 }
 
 void rimuovi_articolo(csv_file *csv_magazzino, csv_file *csv_storico)

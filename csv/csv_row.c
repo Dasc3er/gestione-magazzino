@@ -90,11 +90,20 @@ int csv_row_wrap(csv_row *row, FILE *fp)
 		index++;
 
 		// Salvataggio del campo separatamente
-		if (field_end && index != 1)
+		if (field_end)
 		{
-			// Restrizione della stringa alla dimensione attuale
-			line = realloc(line, sizeof(char) * index);
-			check_allocation(line);
+			if (index != 1)
+			{
+				// Restrizione della stringa alla dimensione attuale
+				line = realloc(line, sizeof(char) * index);
+				check_allocation(line);
+			}
+			// Puntatore a NULL nel caso di campo mancante
+			else
+			{
+				free(line);
+				line = NULL;
+			}
 
 			// Aggiunta all'elenco dei campi
 			content_size++;

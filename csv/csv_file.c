@@ -3,6 +3,7 @@
 #include <string.h>
 #include "csv_file.h"
 #include "csv_row.h"
+#include "utils.h"
 
 csv_file *csv_init(char *filepath, int has_header)
 {
@@ -13,10 +14,16 @@ csv_file *csv_init(char *filepath, int has_header)
 	pointer->current_byte = 0;
 	pointer->line_counter = 1; // Linea 0 riservata all'header
 
+	pointer->field_counter = 0;
 	pointer->field_separator = ',';
 
 	// Lettura dell'header (se presente)
 	csv_row *header = csv_read_line(pointer);
+	if (header == NULL)
+	{
+		fprintf(stderr, "Errore nella lettura dell'header del file CSV: %s\n", filepath);
+		exit(EXIT_FAILURE);
+	}
 
 	// Conteggio dei campi
 	pointer->field_counter = header->field_counter;
@@ -84,31 +91,50 @@ void csv_write(csv_file *file, int line_number, char *content)
 	}
 
 	int inserted = 0;
-	int insert_newline = strlen(content) != 0;
+	int was_last_line_empty = 1;
+	int line_counter = file->has_header ? 0 : 1; // Linea 0 riservata all'header
 
 	// Aggiunta della riga come prefisso al file (PREPEND)
 	if (line_number == -1)
 	{
 		fputs(content, writer);
-		if (insert_newline)
-			fputc('\n', writer);
 		inserted = 1;
+
+		// Controllo sui contenuti
+		if (strlen(content) != 0)
+		{
+			was_last_line_empty = 0;
+		}
 	}
 
-	int line_counter = file->has_header ? 0 : 1; // Linea 0 riservata all'header
-	char c = fgetc(reader);
-	while (c != EOF)
+	size_t buffer_size = 32, characters;
+	char *buffer;
+
+	// Allocazione dinamica
+	buffer = malloc(buffer_size * sizeof(char));
+	check_allocation(buffer);
+
+	// Lettura linea da file
+	characters = getline(&buffer, &buffer_size, reader);
+	while (characters != -1)
 	{
+		// Aggiunta del carattere di invio a capo solo se necessario
+		if (
+			!was_last_line_empty &&
+			(line_counter != line_number || strlen(content) != 0)
+			)
+		{
+			fputc('\n', writer);
+		}
+
 		// Linea normale
 		if (line_counter != line_number)
 		{
-			fputc(c, writer);
+			int length = strlen(buffer) - 1;
+			buffer[length] = '\0'; // Rimozione invio a capo automatico
+			fputs(buffer, writer);
 
-			// Aumento del numero di riga
-			if (c == '\n')
-			{
-				line_counter++;
-			}
+			was_last_line_empty = (length == 0);
 		}
 
 		// Linea da sostituire
@@ -116,28 +142,29 @@ void csv_write(csv_file *file, int line_number, char *content)
 		{
 			// Scrittura del nuovo contenuto
 			fputs(content, writer);
-			if (insert_newline)
-				fputc('\n', writer);
 			inserted = 1;
 
-			// Impostazione della riga come scritta
-			line_counter++;
-
-			// Rimozione della riga dal file originale
-			while (c != '\n' && c != EOF)
-			{
-				c = fgetc(reader);
-			}
+			was_last_line_empty = strlen(content) == 0;
 		}
 
-		// Lettura del carattere successivo
-		c = fgetc(reader);
+		// Conteggio della riga
+		line_counter++;
+		free(buffer);
+
+		// Allocazione dinamica
+		buffer = malloc(buffer_size * sizeof(char));
+		check_allocation(buffer);
+
+		// Lettura linea da file
+		characters = getline(&buffer, &buffer_size, reader);
 	}
+
+	free(buffer);
 
 	// Aggiunta della riga come suffisso al file (APPEND)
 	if (!inserted || line_number >= line_counter)
 	{
-		if (insert_newline)
+		if (!was_last_line_empty && strlen(content) != 0)
 			fputc('\n', writer);
 		fputs(content, writer);
 		inserted = 1;

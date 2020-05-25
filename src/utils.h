@@ -6,7 +6,8 @@
 // Colori per l'output
 #define COLOR_RED() printf("\033[1;31m");
 #define COLOR_GREEN() printf("\033[0;32m");
-#define COLOR_RESET() printf("\033[0m");
+#define TEXT_RESET() printf("\033[0m");
+#define TEXT_BOLD() printf("\033[1m");
 
 #define TABLE_HEADER_LENTGH 100
 #define TABLE_HEADER_SEP(length)    \
