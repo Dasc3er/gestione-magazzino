@@ -1,4 +1,4 @@
-Tipo,Descrizione,Dimensione A,Dimensione B,Peso,Codice,Prezzo
+Tipo,Descrizione,Dimensione A,Dimensione B,Peso,Codice,Quantità
 Photo Wallpaper Mural,Farmer's Field,104,70.5,0.6540,5057582937298,14.9500
 Photo Wallpaper Mural,Road To Nowhere...,104,70.5,0.6540,5057582937304,14.9500
 Photo Wallpaper Mural,Agharta,104,70.5,0.6540,5057582937311,14.9500
@@ -8,7 +8,7 @@ Photo Wallpaper Mural,Hope,104,70.5,0.6540,5057582937328,14.9500
 Photo Wallpaper Mural,The Determined Ones,104,70.5,0.6540,5057582937342,14.9500
 Photo Wallpaper Mural,Stick Together,104,70.5,0.6540,5057582937359,14.9500
 Photo Wallpaper Mural,Bark,104,70.5,0.6540,5057582937366,14.9500
-Photo Wallpaper Mural,"Road Up, Down, Up",104,70.5,0.6540,5057582937373,14.9500
+Photo Wallpaper Mural,Road Up - Down - Up,104,70.5,0.6540,5057582937373,14.9500
 Photo Wallpaper Mural,Following Old Masters,104,70.5,0.6540,5057582937380,14.9500
 Photo Wallpaper Mural,Winter Has Arrived,104,70.5,0.6540,5057582937397,14.9500
 Photo Wallpaper Mural,Acid River,104,70.5,0.6540,5057582937403,14.9500
@@ -106,7 +106,7 @@ Photo Wallpaper Mural,The Way To The Trees,104,70.5,0.6540,5057582938400,14.9500
 Photo Wallpaper Mural,Praia Do Castelejo,104,70.5,0.6540,5057582938417,14.9500
 Photo Wallpaper Mural,Path To The Light,104,70.5,0.6540,5057582938424,14.9500
 Photo Wallpaper Mural,Red Forest,104,70.5,0.6540,5057582938431,14.9500
-Photo Wallpaper Mural,"Pinza De Arakao, The Ténéré Desert",104,70.5,0.6540,5057582938448,14.9500
+Photo Wallpaper Mural,Pinza De Arakao - The Ténéré Desert,104,70.5,0.6540,5057582938448,14.9500
 Photo Wallpaper Mural,The Dark Traveler,104,70.5,0.6540,5057582938455,14.9500
 Photo Wallpaper Mural,Istanbul,104,70.5,0.6540,5057582938462,14.9500
 Photo Wallpaper Mural,Alone In Somewhere,104,70.5,0.6540,5057582938479,14.9500
@@ -163,7 +163,7 @@ Photo Wallpaper Mural,Under The Ledge,104,70.5,0.6540,5057582939025,14.9500
 Photo Wallpaper Mural,Mountain Lake,104,70.5,0.6540,5057582939049,14.9500
 Photo Wallpaper Mural,Countryside,104,70.5,0.6540,5057582939063,14.9500
 Photo Wallpaper Mural,Foggy Morning In The Mountains,104,70.5,0.6540,5057582939070,14.9500
-Photo Wallpaper Mural,"Cantus Arcticus, Concerto For Birds",104,70.5,0.6540,5057582939087,14.9500
+Photo Wallpaper Mural,Cantus Arcticus - Concerto For Birds,104,70.5,0.6540,5057582939087,14.9500
 Photo Wallpaper Mural,The Pink Corridor,104,70.5,0.6540,5057582939094,14.9500
 Photo Wallpaper Mural,Symbiosis,104,70.5,0.6540,5057582939100,14.9500
 Photo Wallpaper Mural,Out Of The Beach,104,70.5,0.6540,5057582939117,14.9500
@@ -276,7 +276,7 @@ Photo Wallpaper Mural,Leaving,104,70.5,0.6540,5057582940267,14.9500
 Photo Wallpaper Mural,Just Awakened,104,70.5,0.6540,5057582940274,14.9500
 Photo Wallpaper Mural,Sardines Firework,104,70.5,0.6540,5057582940281,14.9500
 Photo Wallpaper Mural,A Lightning Instant Of Give-And-Take,104,70.5,0.6540,5057582940298,14.9500
-Photo Wallpaper Mural,"Yellow Ground, Red Heart",104,70.5,0.6540,5057582940304,14.9500
+Photo Wallpaper Mural,Yellow Ground - Red Heart,104,70.5,0.6540,5057582940304,14.9500
 Photo Wallpaper Mural,Ladybirds,104,70.5,0.6540,5057582940311,14.9500
 Photo Wallpaper Mural,Autumn Dream,104,70.5,0.6540,5057582940328,14.9500
 Photo Wallpaper Mural,Lonely,104,70.5,0.6540,5057582940342,14.9500
@@ -470,7 +470,7 @@ Photo Wallpaper Mural,Concrete Wave,104,70.5,0.6540,5057582942384,14.9500
 Photo Wallpaper Mural,Palazzo Pubblico,104,70.5,0.6540,5057582942391,14.9500
 Photo Wallpaper Mural,Timeless,104,70.5,0.6540,5057582942407,14.9500
 Photo Wallpaper Mural,A Tuscan Feel In China,104,70.5,0.6540,5057582942414,14.9500
-Photo Wallpaper Mural,"Kalbarri, Western Australia",104,70.5,0.6540,5057582942445,14.9500
+Photo Wallpaper Mural,Kalbarri - Western Australia,104,70.5,0.6540,5057582942445,14.9500
 Photo Wallpaper Mural,Passione Annodata,104,70.5,0.6540,5057582942476,14.9500
 Photo Wallpaper Mural,Forest Light,104,70.5,0.6540,5057582942483,14.9500
 Photo Wallpaper Mural,Time Machine,104,70.5,0.6540,5057582942490,14.9500
@@ -686,7 +686,7 @@ Photo Wallpaper Mural,Welcome To The Academy,104,70.5,0.6540,5057582944760,14.95
 Photo Wallpaper Mural,Wildlife,104,70.5,0.6540,5057582944777,14.9500
 Photo Wallpaper Mural,Very Early Spring,104,70.5,0.6540,5057582944807,14.9500
 Photo Wallpaper Mural,Autumn Sun,104,70.5,0.6540,5057582944814,14.9500
-Photo Wallpaper Mural,"Kirkjufell, Under A Boreal Green Sky",104,70.5,0.6540,5057582944821,14.9500
+Photo Wallpaper Mural,Kirkjufell - Under A Boreal Green Sky,104,70.5,0.6540,5057582944821,14.9500
 Photo Wallpaper Mural,Personal Journey,104,70.5,0.6540,5057582944838,14.9500
 Photo Wallpaper Mural,Love A Morning Like This,104,70.5,0.6540,5057582944845,14.9500
 Photo Wallpaper Mural,Path To The Unknown,104,70.5,0.6540,5057582944852,14.9500
@@ -722,7 +722,7 @@ Photo Wallpaper Mural,Color In Morocco,104,70.5,0.6540,5057582945170,14.9500
 Photo Wallpaper Mural,Glowing Mist,104,70.5,0.6540,5057582945187,14.9500
 Photo Wallpaper Mural,Lights In The Dark,104,70.5,0.6540,5057582945194,14.9500
 Photo Wallpaper Mural,Lovely Dawn,104,70.5,0.6540,5057582945200,14.9500
-Photo Wallpaper Mural,"Casa Mila, La Pedrera",104,70.5,0.6540,5057582945217,14.9500
+Photo Wallpaper Mural,Casa Mila - La Pedrera,104,70.5,0.6540,5057582945217,14.9500
 Photo Wallpaper Mural,Lake-Shore Lineup Beauty,104,70.5,0.6540,5057582945224,14.9500
 Photo Wallpaper Mural,Take-Off,104,70.5,0.6540,5057582945231,14.9500
 Photo Wallpaper Mural,December Steps In The Dark Side,104,70.5,0.6540,5057582945248,14.9500
@@ -780,7 +780,7 @@ Photo Wallpaper Mural,Golden Africa,104,70.5,0.6540,5057582945828,14.9500
 Photo Wallpaper Mural,20 Little Things About Me,104,70.5,0.6540,5057582945835,14.9500
 Photo Wallpaper Mural,Livraria Lello,104,70.5,0.6540,5057582945842,14.9500
 Photo Wallpaper Mural,Lake Mattamuskeet Memory,104,70.5,0.6540,5057582945866,14.9500
-Photo Wallpaper Mural,"Love, Peace And Hope For Brussels",104,70.5,0.6540,5057582945873,14.9500
+Photo Wallpaper Mural,Love - Peace And Hope For Brussels,104,70.5,0.6540,5057582945873,14.9500
 Photo Wallpaper Mural,Toronto Sunrise,104,70.5,0.6540,5057582945897,14.9500
 Photo Wallpaper Mural,Access To Heaven,104,70.5,0.6540,5057582945903,14.9500
 Photo Wallpaper Mural,Stairs  B/W,104,70.5,0.6540,5057582945910,14.9500
@@ -1051,7 +1051,7 @@ Photo Wallpaper Mural,Scenes Of A Thousand Boat,104,70.5,0.6540,5057582949178,14
 Photo Wallpaper Mural,Oxararfoss,104,70.5,0.6540,5057582949185,14.9500
 Photo Wallpaper Mural,Calais Beach,104,70.5,0.6540,5057582949192,14.9500
 Photo Wallpaper Mural,Rijksmuseum Library,104,70.5,0.6540,5057582949208,14.9500
-Photo Wallpaper Mural,"Bye Bye, Day!",104,70.5,0.6540,5057582949215,14.9500
+Photo Wallpaper Mural,Bye Bye - Day!,104,70.5,0.6540,5057582949215,14.9500
 Photo Wallpaper Mural,Moments Of Transition,104,70.5,0.6540,5057582949222,14.9500
 Photo Wallpaper Mural,Shorncliffe Pier ,104,70.5,0.6540,5057582949246,14.9500
 Photo Wallpaper Mural,The One,104,70.5,0.6540,5057582949253,14.9500
@@ -1232,7 +1232,7 @@ Photo Wallpaper Mural,The Old Pier,104,70.5,0.6540,5057582951287,14.9500
 Photo Wallpaper Mural,Barn,104,70.5,0.6540,5057582951294,14.9500
 Photo Wallpaper Mural,The Burning Falls,104,70.5,0.6540,5057582951300,14.9500
 Photo Wallpaper Mural,East Africa,104,70.5,0.6540,5057582951317,14.9500
-Photo Wallpaper Mural,"Silence, Sea And Sky",104,70.5,0.6540,5057582951324,14.9500
+Photo Wallpaper Mural,Silence - Sea And Sky,104,70.5,0.6540,5057582951324,14.9500
 Photo Wallpaper Mural,Once Upon A Dream,104,70.5,0.6540,5057582951348,14.9500
 Photo Wallpaper Mural,Eye Of Samsara,104,70.5,0.6540,5057582951355,14.9500
 Photo Wallpaper Mural,Desert Harmony,104,70.5,0.6540,5057582951386,14.9500
@@ -1344,7 +1344,7 @@ Photo Wallpaper Mural,Lonely In Serenity,104,70.5,0.6540,5057582952628,14.9500
 Photo Wallpaper Mural,Panoramic Dubai Marina,104,70.5,0.6540,5057582952642,14.9500
 Photo Wallpaper Mural,Power,104,70.5,0.6540,5057582952659,14.9500
 Photo Wallpaper Mural,Mist In The Morning,104,70.5,0.6540,5057582952666,14.9500
-Photo Wallpaper Mural,"Maramures, A Fairy Land",104,70.5,0.6540,5057582952673,14.9500
+Photo Wallpaper Mural,Maramures - A Fairy Land,104,70.5,0.6540,5057582952673,14.9500
 Photo Wallpaper Mural,Peace And Quiet,104,70.5,0.6540,5057582952680,14.9500
 Photo Wallpaper Mural,Ceiling Of Dolatabad Garden,104,70.5,0.6540,5057582952697,14.9500
 Photo Wallpaper Mural,The Bridge,104,70.5,0.6540,5057582952703,14.9500
@@ -1384,7 +1384,7 @@ Photo Wallpaper Mural,Hope,254,184,1.2640,5057582953007,69.9500
 Photo Wallpaper Mural,The Determined Ones,254,184,1.2640,5057582953021,69.9500
 Photo Wallpaper Mural,Stick Together,254,184,1.2640,5057582953038,69.9500
 Photo Wallpaper Mural,Bark,254,184,1.2640,5057582953045,69.9500
-Photo Wallpaper Mural,"Road Up, Down, Up",254,184,1.2640,5057582953052,69.9500
+Photo Wallpaper Mural,Road Up - Down - Up,254,184,1.2640,5057582953052,69.9500
 Photo Wallpaper Mural,Following Old Masters,254,184,1.2640,5057582953069,69.9500
 Photo Wallpaper Mural,Winter Has Arrived,254,184,1.2640,5057582953076,69.9500
 Photo Wallpaper Mural,Acid River,254,184,1.2640,5057582953083,69.9500
@@ -1482,7 +1482,7 @@ Photo Wallpaper Mural,The Way To The Trees,254,184,1.2640,5057582954080,69.9500
 Photo Wallpaper Mural,Praia Do Castelejo,254,184,1.2640,5057582954097,69.9500
 Photo Wallpaper Mural,Path To The Light,254,184,1.2640,5057582954103,69.9500
 Photo Wallpaper Mural,Red Forest,254,184,1.2640,5057582954110,69.9500
-Photo Wallpaper Mural,"Pinza De Arakao, The Ténéré Desert",254,184,1.2640,5057582954127,69.9500
+Photo Wallpaper Mural,Pinza De Arakao - The Ténéré Desert,254,184,1.2640,5057582954127,69.9500
 Photo Wallpaper Mural,The Dark Traveler,254,184,1.2640,5057582954134,69.9500
 Photo Wallpaper Mural,Istanbul,254,184,1.2640,5057582954141,69.9500
 Photo Wallpaper Mural,Alone In Somewhere,254,184,1.2640,5057582954158,69.9500
@@ -1539,7 +1539,7 @@ Photo Wallpaper Mural,Under The Ledge,254,184,1.2640,5057582954707,69.9500
 Photo Wallpaper Mural,Mountain Lake,254,184,1.2640,5057582954721,69.9500
 Photo Wallpaper Mural,Countryside,254,184,1.2640,5057582954745,69.9500
 Photo Wallpaper Mural,Foggy Morning In The Mountains,254,184,1.2640,5057582954752,69.9500
-Photo Wallpaper Mural,"Cantus Arcticus, Concerto For Birds",254,184,1.2640,5057582954769,69.9500
+Photo Wallpaper Mural,Cantus Arcticus - Concerto For Birds,254,184,1.2640,5057582954769,69.9500
 Photo Wallpaper Mural,The Pink Corridor,254,184,1.2640,5057582954776,69.9500
 Photo Wallpaper Mural,Symbiosis,254,184,1.2640,5057582954783,69.9500
 Photo Wallpaper Mural,Out Of The Beach,254,184,1.2640,5057582954790,69.9500
@@ -1652,7 +1652,7 @@ Photo Wallpaper Mural,Leaving,254,184,1.2640,5057582955940,69.9500
 Photo Wallpaper Mural,Just Awakened,254,184,1.2640,5057582955957,69.9500
 Photo Wallpaper Mural,Sardines Firework,254,184,1.2640,5057582955964,69.9500
 Photo Wallpaper Mural,A Lightning Instant Of Give-And-Take,254,184,1.2640,5057582955971,69.9500
-Photo Wallpaper Mural,"Yellow Ground, Red Heart",254,184,1.2640,5057582955988,69.9500
+Photo Wallpaper Mural,Yellow Ground - Red Heart,254,184,1.2640,5057582955988,69.9500
 Photo Wallpaper Mural,Ladybirds,254,184,1.2640,5057582955995,69.9500
 Photo Wallpaper Mural,Autumn Dream,254,184,1.2640,5057582956008,69.9500
 Photo Wallpaper Mural,Lonely,254,184,1.2640,5057582956022,69.9500
@@ -1846,7 +1846,7 @@ Photo Wallpaper Mural,Concrete Wave,254,184,1.2640,5057582958064,69.9500
 Photo Wallpaper Mural,Palazzo Pubblico,254,184,1.2640,5057582958071,69.9500
 Photo Wallpaper Mural,Timeless,254,184,1.2640,5057582958088,69.9500
 Photo Wallpaper Mural,A Tuscan Feel In China,254,184,1.2640,5057582958095,69.9500
-Photo Wallpaper Mural,"Kalbarri, Western Australia",254,184,1.2640,5057582958125,69.9500
+Photo Wallpaper Mural,Kalbarri - Western Australia,254,184,1.2640,5057582958125,69.9500
 Photo Wallpaper Mural,Passione Annodata,254,184,1.2640,5057582958156,69.9500
 Photo Wallpaper Mural,Forest Light,254,184,1.2640,5057582958163,69.9500
 Photo Wallpaper Mural,Time Machine,254,184,1.2640,5057582958170,69.9500
@@ -2062,7 +2062,7 @@ Photo Wallpaper Mural,Welcome To The Academy,254,184,1.2640,5057582960449,69.950
 Photo Wallpaper Mural,Wildlife,254,184,1.2640,5057582960456,69.9500
 Photo Wallpaper Mural,Very Early Spring,254,184,1.2640,5057582960487,69.9500
 Photo Wallpaper Mural,Autumn Sun,254,184,1.2640,5057582960494,69.9500
-Photo Wallpaper Mural,"Kirkjufell, Under A Boreal Green Sky",254,184,1.2640,5057582960500,69.9500
+Photo Wallpaper Mural,Kirkjufell - Under A Boreal Green Sky,254,184,1.2640,5057582960500,69.9500
 Photo Wallpaper Mural,Personal Journey,254,184,1.2640,5057582960517,69.9500
 Photo Wallpaper Mural,Love A Morning Like This,254,184,1.2640,5057582960524,69.9500
 Photo Wallpaper Mural,Path To The Unknown,254,184,1.2640,5057582960531,69.9500
@@ -2098,7 +2098,7 @@ Photo Wallpaper Mural,Color In Morocco,254,184,1.2640,5057582960852,69.9500
 Photo Wallpaper Mural,Glowing Mist,254,184,1.2640,5057582960869,69.9500
 Photo Wallpaper Mural,Lights In The Dark,254,184,1.2640,5057582960876,69.9500
 Photo Wallpaper Mural,Lovely Dawn,254,184,1.2640,5057582960883,69.9500
-Photo Wallpaper Mural,"Casa Mila, La Pedrera",254,184,1.2640,5057582960890,69.9500
+Photo Wallpaper Mural,Casa Mila - La Pedrera,254,184,1.2640,5057582960890,69.9500
 Photo Wallpaper Mural,Lake-Shore Lineup Beauty,254,184,1.2640,5057582960906,69.9500
 Photo Wallpaper Mural,Take-Off,254,184,1.2640,5057582960913,69.9500
 Photo Wallpaper Mural,December Steps In The Dark Side,254,184,1.2640,5057582960920,69.9500
@@ -2156,7 +2156,7 @@ Photo Wallpaper Mural,Golden Africa,254,184,1.2640,5057582961507,69.9500
 Photo Wallpaper Mural,20 Little Things About Me,254,184,1.2640,5057582961514,69.9500
 Photo Wallpaper Mural,Livraria Lello,254,184,1.2640,5057582961521,69.9500
 Photo Wallpaper Mural,Lake Mattamuskeet Memory,254,184,1.2640,5057582961545,69.9500
-Photo Wallpaper Mural,"Love, Peace And Hope For Brussels",254,184,1.2640,5057582961552,69.9500
+Photo Wallpaper Mural,Love - Peace And Hope For Brussels,254,184,1.2640,5057582961552,69.9500
 Photo Wallpaper Mural,Toronto Sunrise,254,184,1.2640,5057582961576,69.9500
 Photo Wallpaper Mural,Access To Heaven,254,184,1.2640,5057582961583,69.9500
 Photo Wallpaper Mural,Stairs  B/W,254,184,1.2640,5057582961590,69.9500
@@ -2427,7 +2427,7 @@ Photo Wallpaper Mural,Scenes Of A Thousand Boat,254,184,1.2640,5057582964850,69.
 Photo Wallpaper Mural,Oxararfoss,254,184,1.2640,5057582964867,69.9500
 Photo Wallpaper Mural,Calais Beach,254,184,1.2640,5057582964874,69.9500
 Photo Wallpaper Mural,Rijksmuseum Library,254,184,1.2640,5057582964881,69.9500
-Photo Wallpaper Mural,"Bye Bye, Day!",254,184,1.2640,5057582964898,69.9500
+Photo Wallpaper Mural,Bye Bye - Day!,254,184,1.2640,5057582964898,69.9500
 Photo Wallpaper Mural,Moments Of Transition,254,184,1.2640,5057582964904,69.9500
 Photo Wallpaper Mural,Shorncliffe Pier ,254,184,1.2640,5057582964928,69.9500
 Photo Wallpaper Mural,The One,254,184,1.2640,5057582964935,69.9500
@@ -2608,7 +2608,7 @@ Photo Wallpaper Mural,The Old Pier,254,184,1.2640,5057582966960,69.9500
 Photo Wallpaper Mural,Barn,254,184,1.2640,5057582966977,69.9500
 Photo Wallpaper Mural,The Burning Falls,254,184,1.2640,5057582966984,69.9500
 Photo Wallpaper Mural,East Africa,254,184,1.2640,5057582966991,69.9500
-Photo Wallpaper Mural,"Silence, Sea And Sky",254,184,1.2640,5057582967004,69.9500
+Photo Wallpaper Mural,Silence - Sea And Sky,254,184,1.2640,5057582967004,69.9500
 Photo Wallpaper Mural,Once Upon A Dream,254,184,1.2640,5057582967028,69.9500
 Photo Wallpaper Mural,Eye Of Samsara,254,184,1.2640,5057582967035,69.9500
 Photo Wallpaper Mural,Desert Harmony,254,184,1.2640,5057582967066,69.9500
@@ -2720,7 +2720,7 @@ Photo Wallpaper Mural,Lonely In Serenity,254,184,1.2640,5057582968308,69.9500
 Photo Wallpaper Mural,Panoramic Dubai Marina,254,184,1.2640,5057582968322,69.9500
 Photo Wallpaper Mural,Power,254,184,1.2640,5057582968339,69.9500
 Photo Wallpaper Mural,Mist In The Morning,254,184,1.2640,5057582968346,69.9500
-Photo Wallpaper Mural,"Maramures, A Fairy Land",254,184,1.2640,5057582968353,69.9500
+Photo Wallpaper Mural,Maramures - A Fairy Land,254,184,1.2640,5057582968353,69.9500
 Photo Wallpaper Mural,Peace And Quiet,254,184,1.2640,5057582968360,69.9500
 Photo Wallpaper Mural,Ceiling Of Dolatabad Garden,254,184,1.2640,5057582968377,69.9500
 Photo Wallpaper Mural,The Bridge,254,184,1.2640,5057582968384,69.9500
@@ -2759,7 +2759,7 @@ Photo Wallpaper Mural,Hope,368,254,1.9890,5057582968681,99.9500
 Photo Wallpaper Mural,The Determined Ones,368,254,1.9890,5057582968704,99.9500
 Photo Wallpaper Mural,Stick Together,368,254,1.9890,5057582968711,99.9500
 Photo Wallpaper Mural,Bark,368,254,1.9890,5057582968728,99.9500
-Photo Wallpaper Mural,"Road Up, Down, Up",368,254,1.9890,5057582968735,99.9500
+Photo Wallpaper Mural,Road Up - Down - Up,368,254,1.9890,5057582968735,99.9500
 Photo Wallpaper Mural,Following Old Masters,368,254,1.9890,5057582968742,99.9500
 Photo Wallpaper Mural,Winter Has Arrived,368,254,1.9890,5057582968759,99.9500
 Photo Wallpaper Mural,Acid River,368,254,1.9890,5057582968766,99.9500
@@ -2857,7 +2857,7 @@ Photo Wallpaper Mural,The Way To The Trees,368,254,1.9890,5057582969763,99.9500
 Photo Wallpaper Mural,Praia Do Castelejo,368,254,1.9890,5057582969770,99.9500
 Photo Wallpaper Mural,Path To The Light,368,254,1.9890,5057582969787,99.9500
 Photo Wallpaper Mural,Red Forest,368,254,1.9890,5057582969794,99.9500
-Photo Wallpaper Mural,"Pinza De Arakao, The Ténéré Desert",368,254,1.9890,5057582969800,99.9500
+Photo Wallpaper Mural,Pinza De Arakao - The Ténéré Desert,368,254,1.9890,5057582969800,99.9500
 Photo Wallpaper Mural,The Dark Traveler,368,254,1.9890,5057582969817,99.9500
 Photo Wallpaper Mural,Istanbul,368,254,1.9890,5057582969824,99.9500
 Photo Wallpaper Mural,Alone In Somewhere,368,254,1.9890,5057582969831,99.9500
@@ -2914,7 +2914,7 @@ Photo Wallpaper Mural,Under The Ledge,368,254,1.9890,5057582970387,99.9500
 Photo Wallpaper Mural,Mountain Lake,368,254,1.9890,5057582970400,99.9500
 Photo Wallpaper Mural,Countryside,368,254,1.9890,5057582970424,99.9500
 Photo Wallpaper Mural,Foggy Morning In The Mountains,368,254,1.9890,5057582970431,99.9500
-Photo Wallpaper Mural,"Cantus Arcticus, Concerto For Birds",368,254,1.9890,5057582970448,99.9500
+Photo Wallpaper Mural,Cantus Arcticus - Concerto For Birds,368,254,1.9890,5057582970448,99.9500
 Photo Wallpaper Mural,The Pink Corridor,368,254,1.9890,5057582970455,99.9500
 Photo Wallpaper Mural,Symbiosis,368,254,1.9890,5057582970462,99.9500
 Photo Wallpaper Mural,Out Of The Beach,368,254,1.9890,5057582970479,99.9500
@@ -3027,7 +3027,7 @@ Photo Wallpaper Mural,Leaving,368,254,1.9890,5057582971629,99.9500
 Photo Wallpaper Mural,Just Awakened,368,254,1.9890,5057582971636,99.9500
 Photo Wallpaper Mural,Sardines Firework,368,254,1.9890,5057582971643,99.9500
 Photo Wallpaper Mural,A Lightning Instant Of Give-And-Take,368,254,1.9890,5057582971650,99.9500
-Photo Wallpaper Mural,"Yellow Ground, Red Heart",368,254,1.9890,5057582971667,99.9500
+Photo Wallpaper Mural,Yellow Ground - Red Heart,368,254,1.9890,5057582971667,99.9500
 Photo Wallpaper Mural,Ladybirds,368,254,1.9890,5057582971674,99.9500
 Photo Wallpaper Mural,Autumn Dream,368,254,1.9890,5057582971681,99.9500
 Photo Wallpaper Mural,Lonely,368,254,1.9890,5057582971704,99.9500
@@ -3221,7 +3221,7 @@ Photo Wallpaper Mural,Concrete Wave,368,254,1.9890,5057582973746,99.9500
 Photo Wallpaper Mural,Palazzo Pubblico,368,254,1.9890,5057582973753,99.9500
 Photo Wallpaper Mural,Timeless,368,254,1.9890,5057582973760,99.9500
 Photo Wallpaper Mural,A Tuscan Feel In China,368,254,1.9890,5057582973777,99.9500
-Photo Wallpaper Mural,"Kalbarri, Western Australia",368,254,1.9890,5057582973807,99.9500
+Photo Wallpaper Mural,Kalbarri - Western Australia,368,254,1.9890,5057582973807,99.9500
 Photo Wallpaper Mural,Passione Annodata,368,254,1.9890,5057582973838,99.9500
 Photo Wallpaper Mural,Forest Light,368,254,1.9890,5057582973845,99.9500
 Photo Wallpaper Mural,Time Machine,368,254,1.9890,5057582973852,99.9500
@@ -3437,7 +3437,7 @@ Photo Wallpaper Mural,Welcome To The Academy,368,254,1.9890,5057582976129,99.950
 Photo Wallpaper Mural,Wildlife,368,254,1.9890,5057582976136,99.9500
 Photo Wallpaper Mural,Very Early Spring,368,254,1.9890,5057582976167,99.9500
 Photo Wallpaper Mural,Autumn Sun,368,254,1.9890,5057582976174,99.9500
-Photo Wallpaper Mural,"Kirkjufell, Under A Boreal Green Sky",368,254,1.9890,5057582976181,99.9500
+Photo Wallpaper Mural,Kirkjufell - Under A Boreal Green Sky,368,254,1.9890,5057582976181,99.9500
 Photo Wallpaper Mural,Personal Journey,368,254,1.9890,5057582976198,99.9500
 Photo Wallpaper Mural,Love A Morning Like This,368,254,1.9890,5057582976204,99.9500
 Photo Wallpaper Mural,Path To The Unknown,368,254,1.9890,5057582976211,99.9500
@@ -3473,7 +3473,7 @@ Photo Wallpaper Mural,Color In Morocco,368,254,1.9890,5057582976532,99.9500
 Photo Wallpaper Mural,Glowing Mist,368,254,1.9890,5057582976549,99.9500
 Photo Wallpaper Mural,Lights In The Dark,368,254,1.9890,5057582976556,99.9500
 Photo Wallpaper Mural,Lovely Dawn,368,254,1.9890,5057582976563,99.9500
-Photo Wallpaper Mural,"Casa Mila, La Pedrera",368,254,1.9890,5057582976570,99.9500
+Photo Wallpaper Mural,Casa Mila - La Pedrera,368,254,1.9890,5057582976570,99.9500
 Photo Wallpaper Mural,Lake-Shore Lineup Beauty,368,254,1.9890,5057582976587,99.9500
 Photo Wallpaper Mural,Take-Off,368,254,1.9890,5057582976594,99.9500
 Photo Wallpaper Mural,December Steps In The Dark Side,368,254,1.9890,5057582976600,99.9500
@@ -3531,7 +3531,7 @@ Photo Wallpaper Mural,Golden Africa,368,254,1.9890,5057582977188,99.9500
 Photo Wallpaper Mural,20 Little Things About Me,368,254,1.9890,5057582977195,99.9500
 Photo Wallpaper Mural,Livraria Lello,368,254,1.9890,5057582977201,99.9500
 Photo Wallpaper Mural,Lake Mattamuskeet Memory,368,254,1.9890,5057582977225,99.9500
-Photo Wallpaper Mural,"Love, Peace And Hope For Brussels",368,254,1.9890,5057582977232,99.9500
+Photo Wallpaper Mural,Love - Peace And Hope For Brussels,368,254,1.9890,5057582977232,99.9500
 Photo Wallpaper Mural,Toronto Sunrise,368,254,1.9890,5057582977256,99.9500
 Photo Wallpaper Mural,Access To Heaven,368,254,1.9890,5057582977263,99.9500
 Photo Wallpaper Mural,Stairs  B/W,368,254,1.9890,5057582977270,99.9500
@@ -3802,7 +3802,7 @@ Photo Wallpaper Mural,Scenes Of A Thousand Boat,368,254,1.9890,5057582980539,99.
 Photo Wallpaper Mural,Oxararfoss,368,254,1.9890,5057582980546,99.9500
 Photo Wallpaper Mural,Calais Beach,368,254,1.9890,5057582980553,99.9500
 Photo Wallpaper Mural,Rijksmuseum Library,368,254,1.9890,5057582980560,99.9500
-Photo Wallpaper Mural,"Bye Bye, Day!",368,254,1.9890,5057582980577,99.9500
+Photo Wallpaper Mural,Bye Bye - Day!,368,254,1.9890,5057582980577,99.9500
 Photo Wallpaper Mural,Moments Of Transition,368,254,1.9890,5057582980584,99.9500
 Photo Wallpaper Mural,Shorncliffe Pier ,368,254,1.9890,5057582980607,99.9500
 Photo Wallpaper Mural,The One,368,254,1.9890,5057582980614,99.9500
@@ -3983,7 +3983,7 @@ Photo Wallpaper Mural,The Old Pier,368,254,1.9890,5057582982649,99.9500
 Photo Wallpaper Mural,Barn,368,254,1.9890,5057582982656,99.9500
 Photo Wallpaper Mural,The Burning Falls,368,254,1.9890,5057582982663,99.9500
 Photo Wallpaper Mural,East Africa,368,254,1.9890,5057582982670,99.9500
-Photo Wallpaper Mural,"Silence, Sea And Sky",368,254,1.9890,5057582982687,99.9500
+Photo Wallpaper Mural,Silence - Sea And Sky,368,254,1.9890,5057582982687,99.9500
 Photo Wallpaper Mural,Once Upon A Dream,368,254,1.9890,5057582982700,99.9500
 Photo Wallpaper Mural,Eye Of Samsara,368,254,1.9890,5057582982717,99.9500
 Photo Wallpaper Mural,Desert Harmony,368,254,1.9890,5057582982748,99.9500
@@ -4095,7 +4095,7 @@ Photo Wallpaper Mural,Lonely In Serenity,368,254,1.9890,5057582983981,99.9500
 Photo Wallpaper Mural,Panoramic Dubai Marina,368,254,1.9890,5057582984001,99.9500
 Photo Wallpaper Mural,Power,368,254,1.9890,5057582984018,99.9500
 Photo Wallpaper Mural,Mist In The Morning,368,254,1.9890,5057582984025,99.9500
-Photo Wallpaper Mural,"Maramures, A Fairy Land",368,254,1.9890,5057582984032,99.9500
+Photo Wallpaper Mural,Maramures - A Fairy Land,368,254,1.9890,5057582984032,99.9500
 Photo Wallpaper Mural,Peace And Quiet,368,254,1.9890,5057582984049,99.9500
 Photo Wallpaper Mural,Ceiling Of Dolatabad Garden,368,254,1.9890,5057582984056,99.9500
 Photo Wallpaper Mural,The Bridge,368,254,1.9890,5057582984063,99.9500
@@ -4134,7 +4134,7 @@ Photo Wallpaper Mural,Hope,416,290,2.4100,5057582984360,129.9500
 Photo Wallpaper Mural,The Determined Ones,416,290,2.4100,5057582984384,129.9500
 Photo Wallpaper Mural,Stick Together,416,290,2.4100,5057582984391,129.9500
 Photo Wallpaper Mural,Bark,416,290,2.4100,5057582984407,129.9500
-Photo Wallpaper Mural,"Road Up, Down, Up",416,290,2.4100,5057582984414,129.9500
+Photo Wallpaper Mural,Road Up - Down - Up,416,290,2.4100,5057582984414,129.9500
 Photo Wallpaper Mural,Following Old Masters,416,290,2.4100,5057582984421,129.9500
 Photo Wallpaper Mural,Winter Has Arrived,416,290,2.4100,5057582984438,129.9500
 Photo Wallpaper Mural,Acid River,416,290,2.4100,5057582984445,129.9500
@@ -4232,7 +4232,7 @@ Photo Wallpaper Mural,The Way To The Trees,416,290,2.4100,5057582985442,129.9500
 Photo Wallpaper Mural,Praia Do Castelejo,416,290,2.4100,5057582985459,129.9500
 Photo Wallpaper Mural,Path To The Light,416,290,2.4100,5057582985466,129.9500
 Photo Wallpaper Mural,Red Forest,416,290,2.4100,5057582985473,129.9500
-Photo Wallpaper Mural,"Pinza De Arakao, The Ténéré Desert",416,290,2.4100,5057582985480,129.9500
+Photo Wallpaper Mural,Pinza De Arakao - The Ténéré Desert,416,290,2.4100,5057582985480,129.9500
 Photo Wallpaper Mural,The Dark Traveler,416,290,2.4100,5057582985497,129.9500
 Photo Wallpaper Mural,Istanbul,416,290,2.4100,5057582985503,129.9500
 Photo Wallpaper Mural,Alone In Somewhere,416,290,2.4100,5057582985510,129.9500
@@ -4289,7 +4289,7 @@ Photo Wallpaper Mural,Under The Ledge,416,290,2.4100,5057582986067,129.9500
 Photo Wallpaper Mural,Mountain Lake,416,290,2.4100,5057582986081,129.9500
 Photo Wallpaper Mural,Countryside,416,290,2.4100,5057582986104,129.9500
 Photo Wallpaper Mural,Foggy Morning In The Mountains,416,290,2.4100,5057582986111,129.9500
-Photo Wallpaper Mural,"Cantus Arcticus, Concerto For Birds",416,290,2.4100,5057582986128,129.9500
+Photo Wallpaper Mural,Cantus Arcticus - Concerto For Birds,416,290,2.4100,5057582986128,129.9500
 Photo Wallpaper Mural,The Pink Corridor,416,290,2.4100,5057582986135,129.9500
 Photo Wallpaper Mural,Symbiosis,416,290,2.4100,5057582986142,129.9500
 Photo Wallpaper Mural,Out Of The Beach,416,290,2.4100,5057582986159,129.9500
@@ -4402,7 +4402,7 @@ Photo Wallpaper Mural,Leaving,416,290,2.4100,5057582987309,129.9500
 Photo Wallpaper Mural,Just Awakened,416,290,2.4100,5057582987316,129.9500
 Photo Wallpaper Mural,Sardines Firework,416,290,2.4100,5057582987323,129.9500
 Photo Wallpaper Mural,A Lightning Instant Of Give-And-Take,416,290,2.4100,5057582987330,129.9500
-Photo Wallpaper Mural,"Yellow Ground, Red Heart",416,290,2.4100,5057582987347,129.9500
+Photo Wallpaper Mural,Yellow Ground - Red Heart,416,290,2.4100,5057582987347,129.9500
 Photo Wallpaper Mural,Ladybirds,416,290,2.4100,5057582987354,129.9500
 Photo Wallpaper Mural,Autumn Dream,416,290,2.4100,5057582987361,129.9500
 Photo Wallpaper Mural,Lonely,416,290,2.4100,5057582987385,129.9500
@@ -4596,7 +4596,7 @@ Photo Wallpaper Mural,Concrete Wave,416,290,2.4100,5057582989426,129.9500
 Photo Wallpaper Mural,Palazzo Pubblico,416,290,2.4100,5057582989433,129.9500
 Photo Wallpaper Mural,Timeless,416,290,2.4100,5057582989440,129.9500
 Photo Wallpaper Mural,A Tuscan Feel In China,416,290,2.4100,5057582989457,129.9500
-Photo Wallpaper Mural,"Kalbarri, Western Australia",416,290,2.4100,5057582989488,129.9500
+Photo Wallpaper Mural,Kalbarri - Western Australia,416,290,2.4100,5057582989488,129.9500
 Photo Wallpaper Mural,Passione Annodata,416,290,2.4100,5057582989518,129.9500
 Photo Wallpaper Mural,Forest Light,416,290,2.4100,5057582989525,129.9500
 Photo Wallpaper Mural,Time Machine,416,290,2.4100,5057582989532,129.9500
@@ -4812,7 +4812,7 @@ Photo Wallpaper Mural,Welcome To The Academy,416,290,2.4100,5057582991801,129.95
 Photo Wallpaper Mural,Wildlife,416,290,2.4100,5057582991818,129.9500
 Photo Wallpaper Mural,Very Early Spring,416,290,2.4100,5057582991849,129.9500
 Photo Wallpaper Mural,Autumn Sun,416,290,2.4100,5057582991856,129.9500
-Photo Wallpaper Mural,"Kirkjufell, Under A Boreal Green Sky",416,290,2.4100,5057582991863,129.9500
+Photo Wallpaper Mural,Kirkjufell - Under A Boreal Green Sky,416,290,2.4100,5057582991863,129.9500
 Photo Wallpaper Mural,Personal Journey,416,290,2.4100,5057582991870,129.9500
 Photo Wallpaper Mural,Love A Morning Like This,416,290,2.4100,5057582991887,129.9500
 Photo Wallpaper Mural,Path To The Unknown,416,290,2.4100,5057582991894,129.9500
@@ -4848,7 +4848,7 @@ Photo Wallpaper Mural,Color In Morocco,416,290,2.4100,5057582992211,129.9500
 Photo Wallpaper Mural,Glowing Mist,416,290,2.4100,5057582992228,129.9500
 Photo Wallpaper Mural,Lights In The Dark,416,290,2.4100,5057582992235,129.9500
 Photo Wallpaper Mural,Lovely Dawn,416,290,2.4100,5057582992242,129.9500
-Photo Wallpaper Mural,"Casa Mila, La Pedrera",416,290,2.4100,5057582992259,129.9500
+Photo Wallpaper Mural,Casa Mila - La Pedrera,416,290,2.4100,5057582992259,129.9500
 Photo Wallpaper Mural,Lake-Shore Lineup Beauty,416,290,2.4100,5057582992266,129.9500
 Photo Wallpaper Mural,Take-Off,416,290,2.4100,5057582992273,129.9500
 Photo Wallpaper Mural,December Steps In The Dark Side,416,290,2.4100,5057582992280,129.9500
@@ -4906,7 +4906,7 @@ Photo Wallpaper Mural,Golden Africa,416,290,2.4100,5057582992860,129.9500
 Photo Wallpaper Mural,20 Little Things About Me,416,290,2.4100,5057582992877,129.9500
 Photo Wallpaper Mural,Livraria Lello,416,290,2.4100,5057582992884,129.9500
 Photo Wallpaper Mural,Lake Mattamuskeet Memory,416,290,2.4100,5057582992907,129.9500
-Photo Wallpaper Mural,"Love, Peace And Hope For Brussels",416,290,2.4100,5057582992914,129.9500
+Photo Wallpaper Mural,Love - Peace And Hope For Brussels,416,290,2.4100,5057582992914,129.9500
 Photo Wallpaper Mural,Toronto Sunrise,416,290,2.4100,5057582992938,129.9500
 Photo Wallpaper Mural,Access To Heaven,416,290,2.4100,5057582992945,129.9500
 Photo Wallpaper Mural,Stairs  B/W,416,290,2.4100,5057582992952,129.9500
@@ -5177,7 +5177,7 @@ Photo Wallpaper Mural,Scenes Of A Thousand Boat,416,290,2.4100,5057582996219,129
 Photo Wallpaper Mural,Oxararfoss,416,290,2.4100,5057582996226,129.9500
 Photo Wallpaper Mural,Calais Beach,416,290,2.4100,5057582996233,129.9500
 Photo Wallpaper Mural,Rijksmuseum Library,416,290,2.4100,5057582996240,129.9500
-Photo Wallpaper Mural,"Bye Bye, Day!",416,290,2.4100,5057582996257,129.9500
+Photo Wallpaper Mural,Bye Bye - Day!,416,290,2.4100,5057582996257,129.9500
 Photo Wallpaper Mural,Moments Of Transition,416,290,2.4100,5057582996264,129.9500
 Photo Wallpaper Mural,Shorncliffe Pier ,416,290,2.4100,5057582996288,129.9500
 Photo Wallpaper Mural,The One,416,290,2.4100,5057582996295,129.9500
@@ -5358,7 +5358,7 @@ Photo Wallpaper Mural,The Old Pier,416,290,2.4100,5057582998329,129.9500
 Photo Wallpaper Mural,Barn,416,290,2.4100,5057582998336,129.9500
 Photo Wallpaper Mural,The Burning Falls,416,290,2.4100,5057582998343,129.9500
 Photo Wallpaper Mural,East Africa,416,290,2.4100,5057582998350,129.9500
-Photo Wallpaper Mural,"Silence, Sea And Sky",416,290,2.4100,5057582998367,129.9500
+Photo Wallpaper Mural,Silence - Sea And Sky,416,290,2.4100,5057582998367,129.9500
 Photo Wallpaper Mural,Once Upon A Dream,416,290,2.4100,5057582998381,129.9500
 Photo Wallpaper Mural,Eye Of Samsara,416,290,2.4100,5057582998398,129.9500
 Photo Wallpaper Mural,Desert Harmony,416,290,2.4100,5057582998428,129.9500
@@ -5470,7 +5470,7 @@ Photo Wallpaper Mural,Lonely In Serenity,416,290,2.4100,5057582999661,129.9500
 Photo Wallpaper Mural,Panoramic Dubai Marina,416,290,2.4100,5057582999685,129.9500
 Photo Wallpaper Mural,Power,416,290,2.4100,5057582999692,129.9500
 Photo Wallpaper Mural,Mist In The Morning,416,290,2.4100,5057582999708,129.9500
-Photo Wallpaper Mural,"Maramures, A Fairy Land",416,290,2.4100,5057582999715,129.9500
+Photo Wallpaper Mural,Maramures - A Fairy Land,416,290,2.4100,5057582999715,129.9500
 Photo Wallpaper Mural,Peace And Quiet,416,290,2.4100,5057582999722,129.9500
 Photo Wallpaper Mural,Ceiling Of Dolatabad Garden,416,290,2.4100,5057582999739,129.9500
 Photo Wallpaper Mural,The Bridge,416,290,2.4100,5057582999746,129.9500
@@ -6240,18 +6240,18 @@ Canvas Print,White Tiger,60,40,1.6600,5057582021003,49.9500
 Canvas Print,Tiger Beauty,60,40,1.6600,5057582021027,49.9500
 Canvas Print,Stripes,60,40,1.6600,5057582021034,49.9500
 Canvas Print,Does Not Charge,60,40,1.6600,5057582021041,49.9500
-Canvas Print,"The Milkmaid, Vermeer",60,40,1.6600,5057582021058,49.9500
-Canvas Print,"The Little Street, Vermeer",60,40,1.6600,5057582021065,49.9500
-Canvas Print,"Winter Landscape With Skaters, Hendrick Avercamp",60,40,1.6600,5057582021072,49.9500
-Canvas Print,"Fishing For Souls, Van De Venne",60,40,1.6600,5057582021089,49.9500
-Canvas Print,"The Marsh, Anton Mauve",60,40,1.6600,5057582021096,49.9500
-Canvas Print,"Morning Ride Along The Beach, Anton Mauve",60,40,1.6600,5057582021102,49.9500
-Canvas Print,"Italian Landscape With Umbrella Pines, Hendrik Voogd",60,40,1.6600,5057582021119,49.9500
-Canvas Print,"Orchard At Eemnes, Richard Roland Holst",60,40,1.6600,5057582021126,49.9500
-Canvas Print,"Rough Sea With Ships, Ludolf Bakhuysen",60,40,1.6600,5057582021133,49.9500
-Canvas Print,"Meadow In Bloom, Egber Schaap.",60,40,1.6600,5057582021140,49.9500
-Canvas Print,"Lotus Blossom, Ogawa Kazumasa.",60,40,1.6600,5057582021157,49.9500
-Canvas Print,"The Great Wave Off Kanagawa, Hokusai",60,40,1.6600,5057582021164,49.9500
+Canvas Print,The Milkmaid - Vermeer,60,40,1.6600,5057582021058,49.9500
+Canvas Print,The Little Street - Vermeer,60,40,1.6600,5057582021065,49.9500
+Canvas Print,Winter Landscape With Skaters - Hendrick Avercamp,60,40,1.6600,5057582021072,49.9500
+Canvas Print,Fishing For Souls - Van De Venne,60,40,1.6600,5057582021089,49.9500
+Canvas Print,The Marsh - Anton Mauve,60,40,1.6600,5057582021096,49.9500
+Canvas Print,Morning Ride Along The Beach - Anton Mauve,60,40,1.6600,5057582021102,49.9500
+Canvas Print,Italian Landscape With Umbrella Pines - Hendrik Voogd,60,40,1.6600,5057582021119,49.9500
+Canvas Print,Orchard At Eemnes - Richard Roland Holst,60,40,1.6600,5057582021126,49.9500
+Canvas Print,Rough Sea With Ships - Ludolf Bakhuysen,60,40,1.6600,5057582021133,49.9500
+Canvas Print,Meadow In Bloom - Egber Schaap.,60,40,1.6600,5057582021140,49.9500
+Canvas Print,Lotus Blossom - Ogawa Kazumasa.,60,40,1.6600,5057582021157,49.9500
+Canvas Print,The Great Wave Off Kanagawa - Hokusai,60,40,1.6600,5057582021164,49.9500
 Canvas Print,Waterfront,60,40,1.6600,5057582021171,49.9500
 Canvas Print,Slice Of Paradise,60,40,1.6600,5057582021188,49.9500
 Canvas Print,Waiting For The Next Wave,60,40,1.6600,5057582021195,49.9500
@@ -6438,18 +6438,18 @@ Canvas Print,White Tiger,100,75,3.6000,5057582022994,69.9500
 Canvas Print,Tiger Beauty,100,75,3.6000,5057582023014,69.9500
 Canvas Print,Stripes,100,75,3.6000,5057582023021,69.9500
 Canvas Print,Does Not Charge,100,75,3.6000,5057582023038,69.9500
-Canvas Print,"The Milkmaid, Vermeer",100,75,3.6000,5057582023045,69.9500
-Canvas Print,"The Little Street, Vermeer",100,75,3.6000,5057582023052,69.9500
-Canvas Print,"Winter Landscape With Skaters, Hendrick Avercamp",100,75,3.6000,5057582023069,69.9500
-Canvas Print,"Fishing For Souls, Van De Venne",100,75,3.6000,5057582023076,69.9500
-Canvas Print,"The Marsh, Anton Mauve",100,75,3.6000,5057582023083,69.9500
-Canvas Print,"Morning Ride Along The Beach, Anton Mauve",100,75,3.6000,5057582023090,69.9500
-Canvas Print,"Italian Landscape With Umbrella Pines, Hendrik Voogd",100,75,3.6000,5057582023106,69.9500
-Canvas Print,"Orchard At Eemnes, Richard Roland Holst",100,75,3.6000,5057582023113,69.9500
-Canvas Print,"Rough Sea With Ships, Ludolf Bakhuysen",100,75,3.6000,5057582023120,69.9500
-Canvas Print,"Meadow In Bloom, Egber Schaap.",100,75,3.6000,5057582023137,69.9500
-Canvas Print,"Lotus Blossom, Ogawa Kazumasa.",100,75,3.6000,5057582023144,69.9500
-Canvas Print,"The Great Wave Off Kanagawa, Hokusai",100,75,3.6000,5057582023151,69.9500
+Canvas Print,The Milkmaid - Vermeer,100,75,3.6000,5057582023045,69.9500
+Canvas Print,The Little Street - Vermeer,100,75,3.6000,5057582023052,69.9500
+Canvas Print,Winter Landscape With Skaters - Hendrick Avercamp,100,75,3.6000,5057582023069,69.9500
+Canvas Print,Fishing For Souls - Van De Venne,100,75,3.6000,5057582023076,69.9500
+Canvas Print,The Marsh - Anton Mauve,100,75,3.6000,5057582023083,69.9500
+Canvas Print,Morning Ride Along The Beach - Anton Mauve,100,75,3.6000,5057582023090,69.9500
+Canvas Print,Italian Landscape With Umbrella Pines - Hendrik Voogd,100,75,3.6000,5057582023106,69.9500
+Canvas Print,Orchard At Eemnes - Richard Roland Holst,100,75,3.6000,5057582023113,69.9500
+Canvas Print,Rough Sea With Ships - Ludolf Bakhuysen,100,75,3.6000,5057582023120,69.9500
+Canvas Print,Meadow In Bloom - Egber Schaap.,100,75,3.6000,5057582023137,69.9500
+Canvas Print,Lotus Blossom - Ogawa Kazumasa.,100,75,3.6000,5057582023144,69.9500
+Canvas Print,The Great Wave Off Kanagawa - Hokusai,100,75,3.6000,5057582023151,69.9500
 Canvas Print,Waterfront,100,75,3.6000,5057582023168,69.9500
 Canvas Print,Slice Of Paradise,100,75,3.6000,5057582023175,69.9500
 Canvas Print,Waiting For The Next Wave,100,75,3.6000,5057582023182,69.9500
@@ -6636,18 +6636,18 @@ Canvas Print Set,White Tiger,,,6.1200,5057582024981,89.9500
 Canvas Print Set,Tiger Beauty,,,6.1200,5057582025001,89.9500
 Canvas Print Set,Stripes,,,6.1200,5057582025018,89.9500
 Canvas Print Set,Does Not Charge,,,6.1200,5057582025025,89.9500
-Canvas Print Set,"The Milkmaid, Vermeer",,,6.1200,5057582025032,89.9500
-Canvas Print Set,"The Little Street, Vermeer",,,6.1200,5057582025049,89.9500
-Canvas Print Set,"Winter Landscape With Skaters, Hendrick Avercamp",,,6.1200,5057582025056,89.9500
-Canvas Print Set,"Fishing For Souls, Van De Venne",,,6.1200,5057582025063,89.9500
-Canvas Print Set,"The Marsh, Anton Mauve",,,6.1200,5057582025070,89.9500
-Canvas Print Set,"Morning Ride Along The Beach, Anton Mauve",,,6.1200,5057582025087,89.9500
-Canvas Print Set,"Italian Landscape With Umbrella Pines, Hendrik Voogd",,,6.1200,5057582025094,89.9500
-Canvas Print Set,"Orchard At Eemnes, Richard Roland Holst",,,6.1200,5057582025100,89.9500
-Canvas Print Set,"Rough Sea With Ships, Ludolf Bakhuysen",,,6.1200,5057582025117,89.9500
-Canvas Print Set,"Meadow In Bloom, Egber Schaap.",,,6.1200,5057582025124,89.9500
-Canvas Print Set,"Lotus Blossom, Ogawa Kazumasa.",,,6.1200,5057582025131,89.9500
-Canvas Print Set,"The Great Wave Off Kanagawa, Hokusai",,,6.1200,5057582025148,89.9500
+Canvas Print Set,The Milkmaid - Vermeer,,,6.1200,5057582025032,89.9500
+Canvas Print Set,The Little Street - Vermeer,,,6.1200,5057582025049,89.9500
+Canvas Print Set,Winter Landscape With Skaters - Hendrick Avercamp,,,6.1200,5057582025056,89.9500
+Canvas Print Set,Fishing For Souls - Van De Venne,,,6.1200,5057582025063,89.9500
+Canvas Print Set,The Marsh - Anton Mauve,,,6.1200,5057582025070,89.9500
+Canvas Print Set,Morning Ride Along The Beach - Anton Mauve,,,6.1200,5057582025087,89.9500
+Canvas Print Set,Italian Landscape With Umbrella Pines - Hendrik Voogd,,,6.1200,5057582025094,89.9500
+Canvas Print Set,Orchard At Eemnes - Richard Roland Holst,,,6.1200,5057582025100,89.9500
+Canvas Print Set,Rough Sea With Ships - Ludolf Bakhuysen,,,6.1200,5057582025117,89.9500
+Canvas Print Set,Meadow In Bloom - Egber Schaap.,,,6.1200,5057582025124,89.9500
+Canvas Print Set,Lotus Blossom - Ogawa Kazumasa.,,,6.1200,5057582025131,89.9500
+Canvas Print Set,The Great Wave Off Kanagawa - Hokusai,,,6.1200,5057582025148,89.9500
 Canvas Print Set,Waterfront,,,6.1200,5057582025155,89.9500
 Canvas Print Set,Slice Of Paradise,,,6.1200,5057582025162,89.9500
 Canvas Print Set,Waiting For The Next Wave,,,6.1200,5057582025179,89.9500
@@ -6834,18 +6834,18 @@ Glass Print Set,White Tiger,,,11.4000,5057582026978,129.9500
 Glass Print Set,Tiger Beauty,,,11.4000,5057582026992,129.9500
 Glass Print Set,Stripes,,,11.4000,5057582027005,129.9500
 Glass Print Set,Does Not Charge,,,11.4000,5057582027012,129.9500
-Glass Print Set,"The Milkmaid, Vermeer",,,11.4000,5057582027029,129.9500
-Glass Print Set,"The Little Street, Vermeer",,,11.4000,5057582027036,129.9500
-Glass Print Set,"Winter Landscape With Skaters, Hendrick Avercamp",,,11.4000,5057582027043,129.9500
-Glass Print Set,"Fishing For Souls, Van De Venne",,,11.4000,5057582027050,129.9500
-Glass Print Set,"The Marsh, Anton Mauve",,,11.4000,5057582027067,129.9500
-Glass Print Set,"Morning Ride Along The Beach, Anton Mauve",,,11.4000,5057582027074,129.9500
-Glass Print Set,"Italian Landscape With Umbrella Pines, Hendrik Voogd",,,11.4000,5057582027081,129.9500
-Glass Print Set,"Orchard At Eemnes, Richard Roland Holst",,,11.4000,5057582027098,129.9500
-Glass Print Set,"Rough Sea With Ships, Ludolf Bakhuysen",,,11.4000,5057582027104,129.9500
-Glass Print Set,"Meadow In Bloom, Egber Schaap.",,,11.4000,5057582027111,129.9500
-Glass Print Set,"Lotus Blossom, Ogawa Kazumasa.",,,11.4000,5057582027128,129.9500
-Glass Print Set,"The Great Wave Off Kanagawa, Hokusai",,,11.4000,5057582027135,129.9500
+Glass Print Set,The Milkmaid - Vermeer,,,11.4000,5057582027029,129.9500
+Glass Print Set,The Little Street - Vermeer,,,11.4000,5057582027036,129.9500
+Glass Print Set,Winter Landscape With Skaters - Hendrick Avercamp,,,11.4000,5057582027043,129.9500
+Glass Print Set,Fishing For Souls - Van De Venne,,,11.4000,5057582027050,129.9500
+Glass Print Set,The Marsh - Anton Mauve,,,11.4000,5057582027067,129.9500
+Glass Print Set,Morning Ride Along The Beach - Anton Mauve,,,11.4000,5057582027074,129.9500
+Glass Print Set,Italian Landscape With Umbrella Pines - Hendrik Voogd,,,11.4000,5057582027081,129.9500
+Glass Print Set,Orchard At Eemnes - Richard Roland Holst,,,11.4000,5057582027098,129.9500
+Glass Print Set,Rough Sea With Ships - Ludolf Bakhuysen,,,11.4000,5057582027104,129.9500
+Glass Print Set,Meadow In Bloom - Egber Schaap.,,,11.4000,5057582027111,129.9500
+Glass Print Set,Lotus Blossom - Ogawa Kazumasa.,,,11.4000,5057582027128,129.9500
+Glass Print Set,The Great Wave Off Kanagawa - Hokusai,,,11.4000,5057582027135,129.9500
 Glass Print Set,Waterfront,,,11.4000,5057582027142,129.9500
 Glass Print Set,Slice Of Paradise,,,11.4000,5057582027159,129.9500
 Glass Print Set,Waiting For The Next Wave,,,11.4000,5057582027166,129.9500
@@ -7032,18 +7032,18 @@ Glass Print,White Tiger,40,60,2.8200,5057582028965,69.9500
 Glass Print,Tiger Beauty,40,60,2.8200,5057582028989,69.9500
 Glass Print,Stripes,40,60,2.8200,5057582028996,69.9500
 Glass Print,Does Not Charge,40,60,2.8200,5057582029009,69.9500
-Glass Print,"The Milkmaid, Vermeer",40,60,2.8200,5057582029016,69.9500
-Glass Print,"The Little Street, Vermeer",40,60,2.8200,5057582029023,69.9500
-Glass Print,"Winter Landscape With Skaters, Hendrick Avercamp",40,60,2.8200,5057582029030,69.9500
-Glass Print,"Fishing For Souls, Van De Venne",40,60,2.8200,5057582029047,69.9500
-Glass Print,"The Marsh, Anton Mauve",40,60,2.8200,5057582029054,69.9500
-Glass Print,"Morning Ride Along The Beach, Anton Mauve",40,60,2.8200,5057582029061,69.9500
-Glass Print,"Italian Landscape With Umbrella Pines, Hendrik Voogd",40,60,2.8200,5057582029078,69.9500
-Glass Print,"Orchard At Eemnes, Richard Roland Holst",40,60,2.8200,5057582029085,69.9500
-Glass Print,"Rough Sea With Ships, Ludolf Bakhuysen",40,60,2.8200,5057582029092,69.9500
-Glass Print,"Meadow In Bloom, Egber Schaap.",40,60,2.8200,5057582029108,69.9500
-Glass Print,"Lotus Blossom, Ogawa Kazumasa.",40,60,2.8200,5057582029115,69.9500
-Glass Print,"The Great Wave Off Kanagawa, Hokusai",40,60,2.8200,5057582029122,69.9500
+Glass Print,The Milkmaid - Vermeer,40,60,2.8200,5057582029016,69.9500
+Glass Print,The Little Street - Vermeer,40,60,2.8200,5057582029023,69.9500
+Glass Print,Winter Landscape With Skaters - Hendrick Avercamp,40,60,2.8200,5057582029030,69.9500
+Glass Print,Fishing For Souls - Van De Venne,40,60,2.8200,5057582029047,69.9500
+Glass Print,The Marsh - Anton Mauve,40,60,2.8200,5057582029054,69.9500
+Glass Print,Morning Ride Along The Beach - Anton Mauve,40,60,2.8200,5057582029061,69.9500
+Glass Print,Italian Landscape With Umbrella Pines - Hendrik Voogd,40,60,2.8200,5057582029078,69.9500
+Glass Print,Orchard At Eemnes - Richard Roland Holst,40,60,2.8200,5057582029085,69.9500
+Glass Print,Rough Sea With Ships - Ludolf Bakhuysen,40,60,2.8200,5057582029092,69.9500
+Glass Print,Meadow In Bloom - Egber Schaap.,40,60,2.8200,5057582029108,69.9500
+Glass Print,Lotus Blossom - Ogawa Kazumasa.,40,60,2.8200,5057582029115,69.9500
+Glass Print,The Great Wave Off Kanagawa - Hokusai,40,60,2.8200,5057582029122,69.9500
 Glass Print,Waterfront,40,60,2.8200,5057582029139,69.9500
 Glass Print,Slice Of Paradise,40,60,2.8200,5057582029146,69.9500
 Glass Print,Waiting For The Next Wave,40,60,2.8200,5057582029153,69.9500
@@ -7230,18 +7230,18 @@ Glass Print,White Tiger,100,75,10.0000,5057582030951,99.9500
 Glass Print,Tiger Beauty,100,75,10.0000,5057582030975,99.9500
 Glass Print,Stripes,100,75,10.0000,5057582030982,99.9500
 Glass Print,Does Not Charge,100,75,10.0000,5057582030999,99.9500
-Glass Print,"The Milkmaid, Vermeer",100,75,10.0000,5057582031002,99.9500
-Glass Print,"The Little Street, Vermeer",100,75,10.0000,5057582031019,99.9500
-Glass Print,"Winter Landscape With Skaters, Hendrick Avercamp",100,75,10.0000,5057582031026,99.9500
-Glass Print,"Fishing For Souls, Van De Venne",100,75,10.0000,5057582031033,99.9500
-Glass Print,"The Marsh, Anton Mauve",100,75,10.0000,5057582031040,99.9500
-Glass Print,"Morning Ride Along The Beach, Anton Mauve",100,75,10.0000,5057582031057,99.9500
-Glass Print,"Italian Landscape With Umbrella Pines, Hendrik Voogd",100,75,10.0000,5057582031064,99.9500
-Glass Print,"Orchard At Eemnes, Richard Roland Holst",100,75,10.0000,5057582031071,99.9500
-Glass Print,"Rough Sea With Ships, Ludolf Bakhuysen",100,75,10.0000,5057582031088,99.9500
-Glass Print,"Meadow In Bloom, Egber Schaap.",100,75,10.0000,5057582031095,99.9500
-Glass Print,"Lotus Blossom, Ogawa Kazumasa.",100,75,10.0000,5057582031101,99.9500
-Glass Print,"The Great Wave Off Kanagawa, Hokusai",100,75,10.0000,5057582031118,99.9500
+Glass Print,The Milkmaid - Vermeer,100,75,10.0000,5057582031002,99.9500
+Glass Print,The Little Street - Vermeer,100,75,10.0000,5057582031019,99.9500
+Glass Print,Winter Landscape With Skaters - Hendrick Avercamp,100,75,10.0000,5057582031026,99.9500
+Glass Print,Fishing For Souls - Van De Venne,100,75,10.0000,5057582031033,99.9500
+Glass Print,The Marsh - Anton Mauve,100,75,10.0000,5057582031040,99.9500
+Glass Print,Morning Ride Along The Beach - Anton Mauve,100,75,10.0000,5057582031057,99.9500
+Glass Print,Italian Landscape With Umbrella Pines - Hendrik Voogd,100,75,10.0000,5057582031064,99.9500
+Glass Print,Orchard At Eemnes - Richard Roland Holst,100,75,10.0000,5057582031071,99.9500
+Glass Print,Rough Sea With Ships - Ludolf Bakhuysen,100,75,10.0000,5057582031088,99.9500
+Glass Print,Meadow In Bloom - Egber Schaap.,100,75,10.0000,5057582031095,99.9500
+Glass Print,Lotus Blossom - Ogawa Kazumasa.,100,75,10.0000,5057582031101,99.9500
+Glass Print,The Great Wave Off Kanagawa - Hokusai,100,75,10.0000,5057582031118,99.9500
 Glass Print,Waterfront,100,75,10.0000,5057582031125,99.9500
 Glass Print,Slice Of Paradise,100,75,10.0000,5057582031132,99.9500
 Glass Print,Waiting For The Next Wave,100,75,10.0000,5057582031149,99.9500

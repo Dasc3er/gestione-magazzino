@@ -132,11 +132,17 @@ void movimenta_articolo(csv_file *csv_magazzino, csv_file *csv_storico)
 		char *articolo_line = csv_row_to_line(articolo);
 		csv_write(csv_magazzino, articolo->line_number, articolo_line);
 		free(articolo_line);
+
+		COLOR_GREEN();
+		printf("\nMovimentazione effettuata con successo!\n");
+		TEXT_RESET();
 	}
 	// Operazioni nel caso di non movimentazione
 	else
 	{
+		COLOR_GREEN();
 		printf("\nNessuna movimentazione effettuata!\n");
+		TEXT_RESET();
 	}
 
 	// Liberazione della memoria allocata per la riga

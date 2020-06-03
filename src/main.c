@@ -9,8 +9,29 @@
 #include "magazzino.h"
 #include "storico.h"
 
+/**
+ * Funzione per la visualizzazione del menu principale del programma.
+ * 
+ * @param options Puntatore alle descrizioni delle opzioni
+ * @param length Lunghezza dell'array options
+ */
 void menu(char *options[], int length);
+
+/**
+ * Funzione per l'inizializzazione dei file CSV.
+ * 
+ * @param path Percorso attuale
+ * @param csv_magazzino Puntatore al puntatore per lo struct CSV di magazzino
+ * @param csv_storico Puntatore al puntatore per lo struct CSV di storico
+ */
 void init(char *path, csv_file **csv_magazzino, csv_file **csv_storico);
+
+/**
+ * Funzione per l'uscita dal programma e la chiusura delle principali risorse in utilizzo.
+ * 
+ * @param csv_magazzino Puntatore allo struct CSV di magazzino
+ * @param csv_storico Puntatore allo struct CSV di storico
+ */
 void esci(csv_file *csv_magazzino, csv_file *csv_storico);
 
 int main()
@@ -35,12 +56,13 @@ int main()
 	char *options[] = {
 		"Esci",
 		"Visualizza il magazzino",
-		"Visualizza articoli a rischio esaurimento",
+		"Visualizza articoli a rischio esaurimento e/o esauriti",
+		"Ricerca un articolo tramite codice",
 		"Visualizza lo storico dei movimenti totale",
 		"Visualizza lo storico dei movimenti per un articolo",
 		"Movimenta un articolo del magazzino",
-		"Inserisci un nuovo articolo nel magazzino",
-		"Modifica un articolo del magazzino",
+		"Registra un nuovo articolo nel magazzino",
+		"Modifica un articolo esistente del magazzino",
 		"Rimuovi un articolo dal magazzino",
 	};
 	int length = sizeof(options) / sizeof(options[0]);
@@ -49,6 +71,7 @@ int main()
 		esci,
 		visualizza_magazzino,
 		articoli_esaurimento,
+		ricerca_articolo,
 		storico_totale,
 		storico_articolo,
 		movimenta_articolo,
@@ -59,7 +82,8 @@ int main()
 
 	// Messaggio di benvenuto
 	COLOR_GREEN();
-	printf("Benvenuto nel programma di gestione magazzino!\n");
+	printf("Benvenuto nel sistema di gestione magazzino!\n");
+	printf("Il programma è indirizzato a fornitore alcune funzionalità di base sulla gestione di un magazzino aziendale, con particolare interesse in relazione allo storico dei movimenti dei diversi articoli registrati.\n\n");
 	printf("Percorso corrente: %s\n\n", path);
 	TEXT_RESET();
 
@@ -68,7 +92,7 @@ int main()
 	while (1)
 	{
 		int selection = -1;
-		printf("Opzione selezionata: ");
+		printf("Opzione scelta: ");
 		scanf("%d", &selection);
 
 		// Cleanup del buffer
@@ -78,7 +102,10 @@ int main()
 
 		if (selection >= 0 && selection < length)
 		{
-			printf("\n\n");
+			TEXT_BOLD();
+			printf("\nOpzione individuata: %s\n", options[selection]);
+			TEXT_RESET();
+			
 			functions[selection](csv_magazzino, csv_storico);
 			printf("\n\n");
 

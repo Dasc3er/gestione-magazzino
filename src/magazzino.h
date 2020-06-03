@@ -13,12 +13,20 @@ void visualizza_magazzino(csv_file *csv_magazzino, csv_file *csv_storico);
 
 /**
  * Funzione per visualizzare un elenco di articoli in esaurimento nel magazzino, ovvero il cui campo "Quantità" è minore o uguale al campo "Quantità minima".
- * Ciò permette di inviduare gli articoli per cui è necessario un riordino al fine di avere un numero adeguato di elementi in scorta a magazzino.
+ * Ciò permette di inviduare gli articoli per cui è necessario effettuare un ordine al fornitore per avere un numero adeguato di elementi in scorta a magazzino.
  * 
  * @param csv_magazzino Puntatore allo struct per il magazzino CSV
  * @param csv_storico Puntatore allo struct per lo storico CSV
  */
 void articoli_esaurimento(csv_file *csv_magazzino, csv_file *csv_storico);
+
+/**
+ * Funzione per gestire la ricerca di un articolo a magazzino sulla base del codice.
+ * 
+ * @param csv_magazzino Puntatore allo struct per il magazzino CSV
+ * @param csv_storico Puntatore allo struct per lo storico CSV
+ */
+void ricerca_articolo(csv_file *csv_magazzino, csv_file *csv_storico);
 
 /**
  * Funzione per gestire l'inserimento di un nuovo articolo nel magazzino.
