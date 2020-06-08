@@ -3,10 +3,10 @@
 
 #include <stdio.h>
 
+/**
+ * Funzione per il controllo sulla corretta allocazione dinamica e la visualizzazione di un errore relativo.
+ * 
+ * @param pointer Puntatore
+ */
 void check_allocation(void *pointer);
-
-FILE* csv_file_open(char *filepath);
-
-void csv_file_close(FILE *file);
-
 #endif /* CSV_UTILS_H_ */

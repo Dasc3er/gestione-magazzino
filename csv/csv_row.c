@@ -8,11 +8,20 @@ csv_row *csv_read_line(csv_file *file)
 	csv_row *line = malloc(sizeof(csv_row));
 	line->csv = file;
 
-	// Lettura della riga
-	FILE *fp = csv_file_open(file->filepath);
+	// Apertura del file
+	FILE *fp = fopen(file->filepath, "r+");
+	if (fp == NULL)
+	{
+		fprintf(stderr, "Impossibile aprire il file: %s\n", file->filepath);
+		exit(EXIT_FAILURE);
+	}
+
+ 	// Lettura della riga successiva
 	fseek(fp, file->current_byte, SEEK_SET);
 	int error = csv_row_wrap(line, fp);
-	csv_file_close(fp);
+
+	// Chiusura del file
+	fclose(fp);
 
 	// Restituzione di NULL nel caso in cui il record successivo non sia raggiungibile
 	if (error)

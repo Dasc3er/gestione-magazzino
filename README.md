@@ -30,7 +30,7 @@ In particolare, `data/magazzino.csv` (campi obbligatori *Codice*, *Descrizione*,
 
 La cartella `data/example/` rende disponibili alcuni file di esempio su cui è possibile testare il funzionamento del progetto; il programma permette in ogni caso di creare un nuovo magazzino da zero semplicemente rimuovendo i file sopra indicati.
 
-## Utilizzo
+## Funzionalità disponibili
 
 Il programma presenta nativamente 9 opzioni di utilizzo, strettamente legate alla gestione di base di un magazzino:
  - Visualizza il magazzino

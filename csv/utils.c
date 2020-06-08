@@ -9,24 +9,3 @@ void check_allocation(void *pointer)
 		exit(EXIT_FAILURE);
 	}
 }
-
-FILE *csv_file_open(char *filepath)
-{
-	// Apertura del file
-	FILE *fp = fopen(filepath, "r+");
-	if (fp == NULL)
-	{
-		fprintf(stderr, "Impossibile aprire il file %s\n", filepath);
-		exit(EXIT_FAILURE);
-	}
-
-	// Ripristino all'inizio del file
-	fseek(fp, 0L, SEEK_SET);
-
-	return fp;
-}
-
-void csv_file_close(FILE *file)
-{
-	fclose(file);
-}

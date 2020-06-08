@@ -19,7 +19,12 @@ csv_records *csv_read(csv_file *file)
 	csv_reset(file);
 
 	// Apertura del file
-	FILE *fp = csv_file_open(file->filepath);
+	FILE *fp = fopen(file->filepath, "r+");
+	if (fp == NULL)
+	{
+		fprintf(stderr, "Impossibile aprire il file: %s\n", file->filepath);
+		exit(EXIT_FAILURE);
+	}
 
 	// Rimozione dell'header dai risultati
 	fseek(fp, file->header_bytes, SEEK_SET);
@@ -54,7 +59,7 @@ csv_records *csv_read(csv_file *file)
 	}
 
 	// Chiusura del file
-	csv_file_close(fp);
+	fclose(fp);
 
 	// Reallocazione finale
 	contents = realloc(contents, pointer_size * index);
