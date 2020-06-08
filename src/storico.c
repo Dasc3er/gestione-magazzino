@@ -79,19 +79,18 @@ void movimenta_articolo(csv_file *csv_magazzino, csv_file *csv_storico)
 	}
 
 	// Lettura della quantità dalla riga
-	float qta_attuale = atof(csv_row_field(articolo, "Quantità"));
-	printf("Quantità attuale: %9.1f\n", qta_attuale);
+	float quantita_attuale = atof(csv_row_field(articolo, "Quantità"));
 
 	// Lettura della quantità come stringa, per liberare il buffer di input
-	printf("Nuova quantità [vuoto per lasciare invariato]: ");
-	char *quantita = read_line();
+	printf("Movimentazione [+ per carico in magazzino, - per scarico da magazzino]: ");
+	char *movimentazione_inserita = read_line();
 
-	float qta = atof(quantita);
-	float diff = qta - qta_attuale;
+	float movimentazione = atof(movimentazione_inserita);
 	// Operazioni per la movimentazione
-	if (strlen(quantita) != 0 && diff != 0)
+	if (strlen(movimentazione_inserita) != 0 && movimentazione != 0)
 	{
-		printf("\nMovimentazione effettiva: %.1f\n", diff);
+		//printf("\nMovimentazione effettiva: %.1f\n", movimentazione);
+		//printf("\nMovimentazione effettiva: %.1f\n", movimentazione);
 
 		// Creazione riga dello storico
 		csv_row *riga = csv_row_create(csv_storico);
@@ -101,7 +100,7 @@ void movimenta_articolo(csv_file *csv_magazzino, csv_file *csv_storico)
 		csv_row_field_set(riga, "Data", data);
 
 		// Salvataggio della descrizione per il movimento
-		const char *testo_descrizione = diff > 0 ? "Carico in magazzino" : "Scarico da magazzino";
+		const char *testo_descrizione = movimentazione > 0 ? "Carico in magazzino" : "Scarico da magazzino";
 		char *descrizione = malloc(sizeof(char) * (strlen(testo_descrizione) + 1));
 		strcpy(descrizione, testo_descrizione); // Allocazione dinamica per permettere csv_row_free
 		csv_row_field_set(riga, "Descrizione", descrizione);
@@ -112,10 +111,8 @@ void movimenta_articolo(csv_file *csv_magazzino, csv_file *csv_storico)
 		strcpy(codice, codice_articolo); // Allocazione dinamica per permettere csv_row_free
 		csv_row_field_set(riga, "Codice", codice);
 
-		// Conversione e salvataggio della quantità in stringa
-		char *differenza = malloc(50 * sizeof(char)); // Limite a 50 caratteri
-		sprintf(differenza, "%f", diff);
-		csv_row_field_set(riga, "Quantità", differenza);
+		// Salvataggio della quantità della movimentazione
+		csv_row_field_set(riga, "Quantità", movimentazione_inserita);
 
 		// Inserimento del movimento in modalità APPEND
 		char *riga_line = csv_row_to_line(riga);
@@ -123,16 +120,19 @@ void movimenta_articolo(csv_file *csv_magazzino, csv_file *csv_storico)
 		free(riga_line);
 
 		// Liberazione della memoria dinamica per la riga
-		csv_row_free(riga);
+		csv_row_free(riga); // Liberazione automatica di "movimentazione_inserita", "codice", "descrizione" e "data"
 
 		// Aggiornamento della quantità dell'articolo nel magazzino
-		char * previous = csv_row_field_set(articolo, "Quantità", quantita);
+		char *nuova_quantita = malloc(50 * sizeof(char)); // Limite a 50 caratteri
+		sprintf(nuova_quantita, "%f", quantita_attuale + movimentazione);
+		char * previous = csv_row_field_set(articolo, "Quantità", nuova_quantita);
 		free(previous);
 
 		char *articolo_line = csv_row_to_line(articolo);
 		csv_write(csv_magazzino, articolo->line_number, articolo_line);
 		free(articolo_line);
 
+		// Messaggio informativo
 		COLOR_GREEN();
 		printf("\nMovimentazione effettuata con successo!\n");
 		TEXT_RESET();
@@ -146,5 +146,5 @@ void movimenta_articolo(csv_file *csv_magazzino, csv_file *csv_storico)
 	}
 
 	// Liberazione della memoria allocata per la riga
-	csv_row_free(articolo); // Liberazione automatica di "quantita"
+	csv_row_free(articolo); // Liberazione automatica di "nuova_quantita"
 }
