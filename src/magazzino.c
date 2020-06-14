@@ -1,3 +1,12 @@
+/**
+ * @file magazzino.c
+ * @brief Implementazione delle funzioni per la gesione del magazzino del programma.
+ * 
+ * File contenente l'implementazione delle funzioni per la gesione del magazzino del programma, definite nell'header magazzino.h.
+ * 
+ * @see magazzino.h
+ */
+
 #include <string.h>
 #include <stdlib.h>
 #include "magazzino.h"

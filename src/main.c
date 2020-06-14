@@ -1,3 +1,10 @@
+/**
+ * @file main.c
+ * @brief Sistema di gestione del menu principale del programma, dedicato all'interazione con l'utente.
+ * 
+ * File contenente la definizione e l'implementazione delle funzioni del programma dedicate alla gestione del menu principale e all'interazione con l'utente.
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -10,7 +17,7 @@
 #include "storico.h"
 
 /**
- * Funzione per la visualizzazione del menu principale del programma.
+ * @brief Funzione per la visualizzazione del menu principale del programma.
  * 
  * @param options Puntatore alle descrizioni delle opzioni
  * @param length Lunghezza dell'array options
@@ -18,7 +25,7 @@
 void menu(char *options[], int length);
 
 /**
- * Funzione per l'inizializzazione dei file CSV.
+ * @brief Funzione per l'inizializzazione dei file CSV.
  * 
  * @param path Percorso attuale
  * @param csv_magazzino Puntatore al puntatore per lo struct CSV di magazzino
@@ -27,7 +34,7 @@ void menu(char *options[], int length);
 void init(char *path, csv_file **csv_magazzino, csv_file **csv_storico);
 
 /**
- * Funzione per l'uscita dal programma e la chiusura delle principali risorse in utilizzo.
+ * @brief Funzione per l'uscita dal programma e la chiusura delle principali risorse in utilizzo.
  * 
  * @param csv_magazzino Puntatore allo struct CSV di magazzino
  * @param csv_storico Puntatore allo struct CSV di storico
@@ -52,7 +59,7 @@ int main()
 	csv_file *csv_magazzino, *csv_storico;
 	init(path, &csv_magazzino, &csv_storico);
 
-	// Inizializzazione opzioni del programma
+	// Inizializzazione delle opzioni del programma
 	char *options[] = {
 		"Esci",
 		"Visualizza il magazzino",
@@ -67,6 +74,7 @@ int main()
 	};
 	int length = sizeof(options) / sizeof(options[0]);
 
+	// Funzioni dedicate alle diverse opzioni
 	void (*functions[])(csv_file *, csv_file *) = {
 		esci,
 		visualizza_magazzino,
@@ -87,6 +95,7 @@ int main()
 	printf("Percorso corrente: %s\n\n", path);
 	TEXT_RESET();
 
+	// Visualizzazione del menu principale
 	menu(options, length);
 
 	while (1)
@@ -100,15 +109,19 @@ int main()
 		while ((c = getchar()) != '\n' && c != EOF)
 			;
 
+		// Gestione della selezione corretta di una opzioni
 		if (selection >= 0 && selection < length)
 		{
+			// Visualizzazione opzione selezionata
 			TEXT_BOLD();
 			printf("\nOpzione individuata: %s\n", options[selection]);
 			TEXT_RESET();
 			
+			// Richiamo funzione dedicata all'opzione selezionata
 			functions[selection](csv_magazzino, csv_storico);
 			printf("\n\n");
 
+			// Visualizzazione del menu principale
 			menu(options, length);
 		}
 		else
@@ -132,7 +145,7 @@ void menu(char *options[], int length)
 
 void init(char *path, csv_file **csv_magazzino, csv_file **csv_storico)
 {
-	// Individuazione percorso dei file CSV
+	// Individuazione del percorso dei file CSV
 	char *directory_name = "data";
 	char *magazzino_filename = "magazzino.csv";
 	char *storico_filename = "storico.csv";
@@ -181,6 +194,7 @@ void init(char *path, csv_file **csv_magazzino, csv_file **csv_storico)
 
 void esci(csv_file *csv_magazzino, csv_file *csv_storico)
 {
+	// Messaggio finale
 	COLOR_GREEN();
 	printf("Grazie per aver utilizzato questo programma!\n");
 	TEXT_RESET();

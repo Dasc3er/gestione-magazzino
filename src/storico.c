@@ -1,3 +1,12 @@
+/**
+ * @file storico.c
+ * @brief Implementazione delle funzioni per la gesione dello storico del programma.
+ * 
+ * File contenente l'implementazione delle funzioni per la gesione dello storico del programma, definite nell'header storico.h.
+ * 
+ * @see storico.h
+ */
+
 #include <string.h>
 #include <stdlib.h>
 #include "storico.h"

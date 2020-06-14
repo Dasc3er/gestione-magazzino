@@ -1,6 +1,6 @@
 /**
  * @file utils.h
- * @brief Header per la definizione delle funzionalità di utility della libreria.
+ * @brief Header per la definizione delle funzioni di utility della libreria.
  * 
  * Header che definisce le funzioni di utility della liberia CSV, in particolare in relazione ai controlli sull'allocazione dinamica della memoria.
  */

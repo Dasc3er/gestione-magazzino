@@ -1,3 +1,12 @@
+/**
+ * @file utils.c
+ * @brief Implementazione delle funzioni di utility per l'interazione con l'utente.
+ * 
+ * File contenente l'implementazione delle funzioni ausiliarie per l'interazione con l'utente, definite nell'header utils.h.
+ * 
+ * @see utils.h
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
