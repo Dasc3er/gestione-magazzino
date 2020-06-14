@@ -1,6 +1,8 @@
 /**
- * File utilizzato per l'importazione della libreria tramite un singolo header.
+ * @file csv.h
+ * @brief Header per l'importazione generale della liberia.
  */
+
 #ifndef CSV_H_
 #define CSV_H_
 

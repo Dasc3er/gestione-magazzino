@@ -119,7 +119,7 @@ void movimenta_articolo(csv_file *csv_magazzino, csv_file *csv_storico)
 		csv_write(csv_storico, -2, riga_line);
 		free(riga_line);
 
-		// Liberazione della memoria dinamica per la riga
+		// Liberazione della memoria allocata dinamicamente per la riga
 		csv_row_free(riga); // Liberazione automatica di "movimentazione_inserita", "codice", "descrizione" e "data"
 
 		// Aggiornamento della quantità dell'articolo nel magazzino

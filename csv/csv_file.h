@@ -1,3 +1,10 @@
+/**
+ * @file csv_file.h
+ * @brief Header per la definizione delle funzionalità su file CSV.
+ * 
+ * Header che definisce tutte gli struct e le funzioni principali applicabili sui file CSV nel loro complessivo.
+ */
+
 #ifndef CSV_FILE_H_
 #define CSV_FILE_H_
 
@@ -22,10 +29,10 @@ typedef struct
 } csv_file;
 
 /**
- * Inizializza lo struct dedicato alla gestione del file CSV.
+ * @brief Inizializza lo struct dedicato alla gestione del file CSV.
  *
- * Lo struct contiene le informazioni di base relative al file CSV, quali la posizione del file relativo nel filesystem e i dettagli dell'header se presente.
- *
+ * Lo struct contiene le informazioni di base relative al file CSV, quali la posizione del file relativo nel filesystem e i dettagli dell'header (se presente).
+ * 
  * @param filepath Percorso per il file CSV da leggere
  * @param has_header Flag per la lettura o meno della prima riga come header
  * 
@@ -34,10 +41,12 @@ typedef struct
 csv_file *csv_init(char *filepath, int has_header);
 
 /**
- * Funzione per la scrittura di un contenuto in una riga specifica del file CSV. Il nuovo contenuto non deve contenere il carattere di invio a capo, che viene inserito automaticamente in base al numero di riga indicato.
+ * @brief Funzione per la scrittura di un contenuto in una riga specifica del file CSV.
+ * 
+ * Il nuovo contenuto non deve contenere il carattere di invio a capo, che viene inserito automaticamente in base al numero di riga indicato.
  * Se il numero di riga inserito è eccessivamente elevato oppure non presente nel file originale, il contenuto verrà inserito in modalità APPEND. Il numero di riga "-1" assume il significato di inserimento in modalità PREPEND.
  * 
- * Attenzione: l'utilizzo di questa funzione può rendere invalido il contatore line_number delle righe del CSV salvate in memoria.
+ * @warning Attenzione: l'utilizzo di questa funzione può rendere non valido il contatore line_number delle righe del file CSV presenti in memoria.
  * 
  * @param csv Puntatore al file CSV
  * @param line_number Numero di riga su cui effettuare la scrittura
@@ -46,22 +55,22 @@ csv_file *csv_init(char *filepath, int has_header);
 void csv_write(csv_file *file, int line_number, char *content);
 
 /**
- * Libera la memoria dinamica utilizzata per lo struct CSV.
- * Attenzione: la funzione si aspetta uno struct instanziato tramite allocazione dinamica della memoria, e procede di conseguenza alla liberazione dello struct stesso.
+ * @brief Libera la memoria allocata dinamicamente dello struct CSV.
+ * @warning Attenzione: la funzione si aspetta uno struct instanziato tramite allocazione dinamica della memoria, e procede di conseguenza alla liberazione dello struct stesso e di tutti i contenuti relativi.
  * 
  * @param file Puntatore al file CSV
  */
 void csv_free(csv_file *file);
 
 /**
- * Imposta i contatori del file CSV per la lettura dalla prima riga.
+ * @brief Resetta i contatori del file CSV alla prima riga disponibile.
  * 
  * @param file Puntatore al file CSV
  */
 void csv_reset(csv_file *file);
 
 /**
- * Restituisce un puntatore alla stringa contenente il nome del campo indicato tramite indice.
+ * @brief Restituisce un puntatore alla stringa contenente il nome del campo indicato tramite indice.
  * 
  * @param file Puntatore al file CSV
  * @param index Indice del campo richiesto
@@ -71,7 +80,7 @@ void csv_reset(csv_file *file);
 char *csv_header_field(csv_file *file, int index);
 
 /**
- * Restituisce l'indice del campo che corrisponde alla stringa indicata.
+ * @brief Restituisce l'indice del campo che corrisponde alla stringa indicata.
  * 
  * @param file Puntatore al file CSV
  * @param field Puntatore alla stringa da ricercare nell'header

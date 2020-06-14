@@ -1,3 +1,10 @@
+/**
+ * @file csv_row.h
+ * @brief Header per la definizione delle funzionalità di gestione delle righe di un file CSV.
+ * 
+ * Header che definisce tutte gli struct e le funzioni principali dedicate alla lettura, scrittura e navigazione delle singole righe di un file CSV.
+ */
+
 #ifndef CSV_ROW_H_
 #define CSV_ROW_H_
 
@@ -18,7 +25,9 @@ typedef struct
 } csv_row;
 
 /**
- * Legge e instanzia una nuova riga dal file CSV indicato, seguendo l'ordine indicato dal campo *line_counter* del file.
+ * @brief Legge una nuova riga dal file CSV indicato tramite uno struct csv_row.
+ * 
+ * L'ordine di lettura viene definito dal contenuto dei campi *current_byte* e *line_counter* del file CSV, che permettono di individuare la riga successiva da leggere per il file.
  * 
  * @param csv Puntatore al file CSV 
  * 
@@ -27,7 +36,7 @@ typedef struct
 csv_row *csv_read_line(csv_file *csv);
 
 /**
- * Restituisce il contenuto del campo (idetificato tramite nome relativo) all'interno di una riga CSV.
+ * @brief Restituisce il contenuto del campo (idetificato tramite nome relativo) all'interno di una riga CSV.
  * 
  * Il nome del campo viene utilizzato per l'individuazione dell'indice relativo a partire dall'header del file CSV.
  * 
@@ -39,7 +48,7 @@ csv_row *csv_read_line(csv_file *csv);
 char *csv_row_field(csv_row *row, char *name);
 
 /**
- * Restituisce il contenuto del campo (idetificato tramite indice relativo) all'interno di una riga CSV.
+ * @brief Restituisce il contenuto del campo (idetificato tramite indice relativo) all'interno di una riga CSV.
  * 
  * @param row Puntatore alla riga 
  * @param index Posizione del campo richiesto
@@ -49,10 +58,10 @@ char *csv_row_field(csv_row *row, char *name);
 char *csv_row_field_by_index(csv_row *row, int index);
 
 /**
- * Imposta il contenuto del campo (idetificato tramite nome relativo) all'interno di una riga CSV.
+ * @brief Imposta il contenuto del campo (idetificato tramite nome relativo) all'interno di una riga CSV.
  * 
  * Il nome del campo viene utilizzato per l'individuazione dell'indice relativo a partire dall'header del file CSV.
- * Attenzione: la memoria allocata per il contenuto precedente non viene liberata in automatico.
+ * @warning Attenzione: la memoria allocata per il contenuto precedente non viene liberata in automatico, e il nuovo contenuto deve essere stato creato tramite allocazione dinamica della memoria per permettere la corretta liberazione delle risorse.
  * 
  * @param row Puntatore alla riga 
  * @param name Puntatore al nome del campo richiesto
@@ -63,17 +72,19 @@ char *csv_row_field_by_index(csv_row *row, int index);
 char *csv_row_field_set(csv_row *row, char *name, char *content);
 
 /**
- * Libera la memoria dinamica utilizzata per lo struct della riga CSV.
- * Attenzione: la funzione si aspetta uno struct instanziato tramite allocazione dinamica della memoria, e procede di conseguenza alla liberazione dello struct stesso.
+ * @brief Libera la memoria allocata dinamicamente dello struct della riga CSV.
+ * @warning Attenzione: la funzione si aspetta uno struct instanziato tramite allocazione dinamica della memoria, e procede di conseguenza alla liberazione dello struct stesso.
  * 
  * @param row Puntatore alla riga
  */
 void csv_row_free(csv_row *row);
 
 /**
- * Funzione che legge la riga successiva di un file CSV e ne  interpreta il formato CSV, compilando di conseguenza lo struct dedicato alla riga.
+ * @brief Funzione dedicata a lettura e interpretazione della riga successiva di un file CSV in un relativo struct csv_row indicato.
  * 
  * Se il file viene aperto con successo, la procedura salva l'intera linea di testo in memoria separando dinamicamente i campi sulla base del carattere ";".
+ * 
+ * @warning Attenzione: la procedura di interpretazione non supporta perfettamente il formato CSV, in particolare in relazione alla procedura di *escaping* tramite virgolette.
  * 
  * @param row Puntatore alla riga 
  * @param fp Puntatore al file da cui leggere la riga
@@ -83,7 +94,7 @@ void csv_row_free(csv_row *row);
 int csv_row_wrap(csv_row *row, FILE *fp);
 
 /**
- * Funzione per la conversione della riga in una stringa di formato CSV.
+ * @brief Funzione per la conversione della riga in una stringa di formato CSV.
  * In riferimento alla modalità di lettura e scrittura, questa funzione restituisce il carattere di invio a capo in automatico alla fine del contenuto.
  * 
  * @param row Puntatore alla riga da convertire
@@ -93,7 +104,9 @@ int csv_row_wrap(csv_row *row, FILE *fp);
 char *csv_row_to_line(csv_row *row);
 
 /**
- * Inizializza uno struct di riga vuota per il file CSV indicato, con i contenuti impostati automaticamente a NULL.
+ * @brief Inizializza uno struct di riga vuota per il file CSV indicato.
+ * 
+ * I contenuti dei diversi campi sono impostati automaticamente a NULL.
  * 
  * @param file Puntatore al file CSV per cui creare la riga
  * 

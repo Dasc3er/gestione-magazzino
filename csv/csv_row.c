@@ -1,3 +1,12 @@
+/**
+ * @file csv_row.c
+ * @brief Implementazione delle funzionalità relative alle righe dei file CSV.
+ * 
+ * File contenente l'implementazione delle funzioni relative alle righe dei file CSV, definite nell'header csv_row.h.
+ * 
+ * @see csv_row.h
+ */
+
 #include "csv_row.h"
 #include <stdlib.h>
 #include <string.h>
@@ -5,6 +14,7 @@
 
 csv_row *csv_read_line(csv_file *file)
 {
+	// Allocazione dinamica
 	csv_row *line = malloc(sizeof(csv_row));
 	line->csv = file;
 
@@ -16,7 +26,7 @@ csv_row *csv_read_line(csv_file *file)
 		exit(EXIT_FAILURE);
 	}
 
- 	// Lettura della riga successiva
+	// Lettura della riga successiva
 	fseek(fp, file->current_byte, SEEK_SET);
 	int error = csv_row_wrap(line, fp);
 
@@ -200,7 +210,7 @@ void csv_row_free(csv_row *row)
 	// Liberazione dell'array dei campi
 	free(row->contents);
 
-	// Liberazione dello struct dalla memoria dinamica
+	// Liberazione dello struct dalla memoria allocata dinamicamente
 	free(row);
 }
 
@@ -230,11 +240,13 @@ char *csv_row_field_set(csv_row *row, char *name, char *content)
 	// Ricerca del campo nell'header
 	int index = csv_header_field_index(row->csv, name);
 
+	// Verifica locale degli indici
 	if (index >= row->field_counter || index < 0)
 	{
 		return NULL;
 	}
 
+	// Individuazione valore precedente e salvataggio del nuovo contenuto
 	char *previous = *(row->contents + index);
 	*(row->contents + index) = content;
 

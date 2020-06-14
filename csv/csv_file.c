@@ -1,3 +1,12 @@
+/**
+ * @file csv_file.c
+ * @brief Implementazione delle funzionalità su file CSV.
+ * 
+ * File contenente l'implementazione delle funzioni relative ai file CSV, definite nell'header csv_file.h.
+ * 
+ * @see csv_file.h
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -50,8 +59,16 @@ csv_file *csv_init(char *filepath, int has_header)
 
 void csv_free(csv_file *file)
 {
+	// Liberazione dell'header
 	if (file->has_header)
 	{
+		// Liberazione dei singoli campi
+		for (int i = 0; i < file->field_counter; i++)
+		{
+			free(*(file->header + i));
+		}
+
+		// Liberazione del contenitore
 		free(file->header);
 	}
 
@@ -60,7 +77,7 @@ void csv_free(csv_file *file)
 
 void csv_write(csv_file *file, int line_number, char *content)
 {
-	// Creazzione nome temporaneo
+	// Creazione del nome temporaneo
 	int char_size = sizeof(char);
 	char *template = "XXXXXX";
 
@@ -188,14 +205,14 @@ void csv_write(csv_file *file, int line_number, char *content)
 
 void csv_reset(csv_file *file)
 {
-	// Ripristino inizio del file
+	// Ripristino all'inizio del file
 	file->current_byte = file->header_bytes;
 	file->line_counter = 1;
 }
 
 char *csv_header_field(csv_file *file, int index)
 {
-	// Controllo sulla presenza di header e sugli indici
+	// Controllo sulla presenza dell'header e sugli indici relativi al campo
 	if (!file->has_header || index >= file->field_counter || index < 0)
 	{
 		return NULL;
@@ -208,7 +225,7 @@ int csv_header_field_index(csv_file *file, char *field)
 {
 	int index = -1;
 
-	// Controllo sulla presenza di header
+	// Controllo sulla presenza dell'header
 	if (!file->has_header)
 	{
 		return index;

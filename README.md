@@ -1,6 +1,6 @@
 # Gestione magazzino
 
-Questo progetto prevede lo sviluppo di un sistema per la gestione basilare di un magazzino aziendale in linguaggio C, con particolare interesse verso l'utilizzo della memoria dinamica e delle operazioni di I/O su file.
+Questo progetto prevede lo sviluppo di un sistema per la gestione basilare di un magazzino aziendale in linguaggio C, con particolare interesse verso l'utilizzo della memoria allocata dinamicamente e delle operazioni di I/O su file.
 
 ## Compilazione
 

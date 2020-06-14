@@ -1,3 +1,12 @@
+/**
+ * @file csv_records.c
+ * @brief Implementazione delle funzionalità sulla lettura sequenziale da file CSV.
+ * 
+ * File contenente l'implementazione delle funzioni relative alla lettura sequenziale da file CSV, definite nell'header csv_records.h.
+ * 
+ * @see csv_records.h
+ */
+
 #include <stdlib.h>
 #include "csv_records.h"
 #include "csv_row.h"
@@ -86,6 +95,6 @@ void csv_records_free(csv_records *records)
 	// Liberazione dell'array dei risultati
 	free(records->results);
 
-	// Liberazione dello struct dalla memoria dinamica
+	// Liberazione dello struct dalla memoria allocata dinamicamente
 	free(records);
 }
