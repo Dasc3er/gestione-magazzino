@@ -99,7 +99,6 @@ void movimenta_articolo(csv_file *csv_magazzino, csv_file *csv_storico)
 	if (strlen(movimentazione_inserita) != 0 && movimentazione != 0)
 	{
 		//printf("\nMovimentazione effettiva: %.1f\n", movimentazione);
-		//printf("\nMovimentazione effettiva: %.1f\n", movimentazione);
 
 		// Creazione riga dello storico
 		csv_row *riga = csv_row_create(csv_storico);
